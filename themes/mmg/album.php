@@ -63,10 +63,8 @@ if (empty($cookies)) {
 	<head>
 		<?php zp_apply_filter('theme_head'); ?>
 		<title><?php printAlbumTitle(); ?> | <?php printGalleryTitle(); ?></title>
-		<?php
-		include('includes/head.php');
-		printRSSHeaderLink('Album', getAlbumTitle());
-		?>
+		<?php include('includes/head.php'); ?>
+		<?php if (class_exists('RSS')) printRSSHeaderLink('Album', getAlbumTitle()); ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>

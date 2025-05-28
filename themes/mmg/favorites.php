@@ -50,10 +50,8 @@ if (empty($cookies)) {
 	<head>
 		<?php zp_apply_filter('theme_head'); ?>
 		<title>Favorites | <?php printGalleryTitle(); ?></title>
-		<?php
-		include('includes/head.php');
-		printRSSHeaderLink('Album', getAlbumTitle());
-		?>
+		<?php include('includes/head.php'); ?>
+		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
 	</head>
 	<body id="FavoritesPage">
 		<?php zp_apply_filter('theme_body_open'); ?>

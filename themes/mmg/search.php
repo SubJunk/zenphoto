@@ -47,10 +47,8 @@ if (empty($cookies)) {
 	<head>
 		<?php zp_apply_filter('theme_head'); ?>
 		<title>Search | <?php printGalleryTitle(); ?></title>
-		<?php
-		include('includes/head.php');
-		printRSSHeaderLink('Gallery', gettext('Gallery RSS'));
-		?>
+		<?php include('includes/head.php'); ?>
+		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
 	</head>
 	<body id="SearchPage">
 		<?php
