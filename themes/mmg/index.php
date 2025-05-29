@@ -218,21 +218,60 @@ include('includes/footer.php');
 							echo '<h2>Latest Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							//echo '<span class="sortBy">Sort by: <a href="?sortbyusers=date" class="selected">Date</a> <a href="?sortbyusers=rating">Rating</a> <a href="?sortbyusers=popularity">Popularity</a></span><br style="clear:left;">';
 							echo '<div class="thumbnails">';
-							printLatestAlbums(15, true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, '', false);
+							printAlbumStatistic(
+								15,
+								'latest',
+								true,
+								false,
+								false,
+								40,
+								'',
+								$thumbnailWidth,
+								$thumbnailHeight,
+								true,
+								'',
+								false
+							);
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "popularity") {
 							echo '<h2>Most Popular Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							//echo '<span class="sortBy">Sort by: <a href="?sortbyusers=date">Date</a> <a href="?sortbyusers=rating">Rating</a> <a href="?sortbyusers=popularity" class="selected">Popularity</a></span><br style="clear:left;">';
 							echo '<div class="thumbnails">';
-							printPopularAlbums(15, true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, '', false);
+							printAlbumStatistic(
+								15,
+								'popular',
+								true,
+								false,
+								false,
+								40,
+								'',
+								$thumbnailWidth,
+								$thumbnailHeight,
+								true,
+								'',
+								false
+							);
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "rating") {
 							echo '<h2>Top Rated Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							//echo '<span class="sortBy">Sort by: <a href="?sortbyusers=date">Date</a> <a href="?sortbyusers=rating" class="selected">Rating</a> <a href="?sortbyusers=popularity">Popularity</a></span><br style="clear:left;">';
 							echo '<div class="thumbnails">';
-							printTopRatedAlbums(15, true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, '', false, 1);
+							printAlbumStatistic(
+								15,
+								'toprated',
+								true,
+								false,
+								false,
+								40,
+								'',
+								$thumbnailWidth,
+								$thumbnailHeight,
+								true,
+								'',
+								false,
+								1);
 							echo '</div>';
 							echo '</div>';
 						}
