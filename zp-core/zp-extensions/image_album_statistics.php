@@ -333,9 +333,10 @@ function printAlbumStatisticItem($album, $option, $showtitle = false, $showdate 
  * @param bool $collection only if $albumfolder is set: true if you want to get statistics from this album and all of its subalbums
  * @param integer $threshold the minimum number of ratings (for rating options) or hits (for popular option) an image must have to be included in the list. (Default 0)
  * @param string $sortdirection 'desc' (default) or 'asc'
+ * @param integer $offset the number of results to skip from the start
  * @return array
  */
-function getImageStatistic($number, $option, $albumfolder = '', $collection = false, $threshold = 0, $sortdirection = 'desc') {
+function getImageStatistic($number, $option, $albumfolder = '', $collection = false, $threshold = 0, $sortdirection = 'desc', $offset = 0) {
   global $_zp_gallery, $_zp_db;
   if ($albumfolder) {
     $obj = AlbumBase::newAlbum($albumfolder);
@@ -400,13 +401,19 @@ function getImageStatistic($number, $option, $albumfolder = '', $collection = fa
       break;
   }
   $imageArray = array();
+	$resultsSkipped = 0;
   if (!empty($albumfolder) && $obj->isDynamic()) {
     $sorttype = str_replace('images.', '', $sortorder);
     $images = $obj->getImages(0, 0, $sorttype, $sortdir);
     foreach ($images as $image) {
       $image = Image::newImage($obj, $image);
       if ($image->exists && $image->checkAccess() && ($image->isPublic() || zp_loggedin(VIEW_UNPUBLISHED_RIGHTS))) {
-        $imageArray[] = $image;
+        if ($resultsSkipped > $offset) {
+          $imageArray[] = $image;
+        } else {
+          $resultsSkipped++;
+        }
+
         if (count($imageArray) >= $number) { // got enough
           break;
         }
@@ -417,7 +424,12 @@ function getImageStatistic($number, $option, $albumfolder = '', $collection = fa
     while ($row = $_zp_db->fetchAssoc($result)) {
       $image = Image::newImage(NULL, $row, true);
       if ($image->exists && $image->checkAccess() && ($image->isPublic() || zp_loggedin(VIEW_UNPUBLISHED_RIGHTS))) {
-        $imageArray[] = $image;
+        if ($resultsSkipped > $offset) {
+          $imageArray[] = $image;
+        } else {
+          $resultsSkipped++;
+        }
+
         if (count($imageArray) >= $number) { // got enough
           break;
         }
@@ -458,10 +470,11 @@ function getImageStatistic($number, $option, $albumfolder = '', $collection = fa
  * @param bool $fullimagelink 'false' (default) for the image page link , 'true' for the unprotected full image link (to use Colorbox for example)
  * @param integer $threshold the minimum number of ratings (for rating options) or hits (for popular option) an image must have to be included in the list. (Default 0)
  * @param string $sortdirection 'desc' (default) or 'asc'
+ * @param integer $offset the number of results to skip from the start
  * @return string
  */
-function printImageStatistic($number, $option, $albumfolder = '', $showtitle = false, $showdate = false, $showdesc = false, $desclength = 40, $showstatistic = '', $width = NULL, $height = NULL, $crop = NULL, $collection = false, $fullimagelink = false, $threshold = 0, $sortdirection = 'desc') {
-	$images = getImageStatistic($number, $option, $albumfolder, $collection, $threshold, $sortdirection);
+function printImageStatistic($number, $option, $albumfolder = '', $showtitle = false, $showdate = false, $showdesc = false, $desclength = 40, $showstatistic = '', $width = NULL, $height = NULL, $crop = NULL, $collection = false, $fullimagelink = false, $threshold = 0, $sortdirection = 'desc', $offset = 0) {
+	$images = getImageStatistic($number, $option, $albumfolder, $collection, $threshold, $sortdirection, $offset);
 	if (is_null($crop) && is_null($width) && is_null($height)) {
 		$crop = 2;
 	} else {

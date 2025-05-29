@@ -128,17 +128,68 @@ include('includes/footer.php');
 						echo '<h2>Latest Images</h2><div id="albums">';
 						echo '<span class="sortBy">Sort by: <a href="?sortby=date" class="selected">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
-						printLatestImages($thumbnailsPerPage, '', true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, false, false, $offset);
+						printImageStatistic(
+							$thumbnailsPerPage,
+							'latest',
+							'',
+							true,
+							false,
+							false,
+							40,
+							'',
+							$thumbnailWidth,
+							$thumbnailHeight,
+							true,
+							false,
+							false,
+							0,
+							'desc',
+							$offset
+						);
 					} else if ($sortBy == "popularity") {
 						echo '<h2>Most Popular Images</h2><div id="albums">';
 						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity" class="selected">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
-						printPopularImages($thumbnailsPerPage, '', true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, false, false, $offset);
+						printImageStatistic(
+							$thumbnailsPerPage,
+							'popular',
+							'',
+							true,
+							false,
+							false,
+							40,
+							'',
+							$thumbnailWidth,
+							$thumbnailHeight,
+							true,
+							false,
+							false,
+							0,
+							'desc',
+							$offset
+						);
 					} else if ($sortBy == "rating") {
 						echo '<h2>Top Rated Images</h2><div id="albums">';
 						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating" class="selected">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
-						printTopRatedImages($thumbnailsPerPage, '', true, false, false, 40, '', $thumbnailWidth, $thumbnailHeight, true, false, false, 2, $offset);
+						printImageStatistic(
+							$thumbnailsPerPage,
+							'toprated',
+							'',
+							true,
+							false,
+							false,
+							40,
+							'',
+							$thumbnailWidth,
+							$thumbnailHeight,
+							true,
+							false,
+							false,
+							0,
+							'desc',
+							$offset
+						);
 					}
 					echo '</div></div>';
 				?>
