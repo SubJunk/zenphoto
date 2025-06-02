@@ -2525,6 +2525,7 @@ function printAdminHeader($tab, $subtab = NULL) {
 			$image->setDateTime(sanitize($_POST["$index-date"]));
 			$image->setPublished(isset($_POST["$index-Visible"]));
 			$image->setCommentsAllowed(isset($_POST["$index-allowcomments"]));
+			$image->setNSFW(isset($_POST["$index-nsfw"]));
 			if (isset($_POST["reset_hitcounter$index"])) {
 				$image->set('hitcounter', 0);
 			}

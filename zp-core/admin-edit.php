@@ -1067,6 +1067,10 @@ echo "\n</head>";
 																	}
 																?>
 																<label class="checkboxlabel">
+																	<input type="checkbox" id="nsfw-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-nsfw" value="1" <?php if ($image->getNSFW()) { echo ' checked="checked"'; } ?> />
+																	<?php echo gettext("NSFW - Contains adult content"); ?>
+																</label>
+																<label class="checkboxlabel">
 																	<input type="checkbox" id="Visible-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-Visible" value="1" <?php if ($image->get('show', false)) echo ' checked="checked"'; ?> />
 																	<?php echo $publishlabel; ?>
 																</label>

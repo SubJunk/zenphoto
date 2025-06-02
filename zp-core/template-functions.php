@@ -3354,6 +3354,13 @@ function printSizedImageURL($size, $text, $title, $class = NULL, $id = NULL) {
 	printLinkHTML(getSizedImageURL($size), $text, $title, $class, $id);
 }
 
+function getNSFW() {
+	if (!in_context(ZP_IMAGE))
+		return false;
+	global $_zp_current_image;
+	return $_zp_current_image->getNSFW();
+}
+
 /**
  * Returns a list of tags for context of the page called where called
  *

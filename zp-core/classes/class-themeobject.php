@@ -349,6 +349,12 @@ class ThemeObject extends PersistentObject {
 	function setCommentsAllowed($commentson) {
 		$this->set('commentson', (int) ($commentson && true));
 	}
+	
+	function getNSFW() { return $this->get('nsfw'); }
+
+	function setNSFW($nsfw) {
+		$this->set('nsfw', (int) ($nsfw && true));
+	}
 
 	/**
 	 * Returns an array of comments for this album
