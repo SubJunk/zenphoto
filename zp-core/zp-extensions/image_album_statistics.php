@@ -364,6 +364,35 @@ function getImageStatistic($number, $option, $albumfolder = '', $collection = fa
   if ($option == 'popular' && $threshold > 0) {
     $albumWhere .= 'AND images.hitcounter >= ' . $threshold;
   }
+
+	$userWidth  = "";
+	$userHeight = "";
+	if (isset($_GET['userwidth'])) {
+		$userWidth = $_GET['userwidth'];
+	}
+	if (isset($_GET['userheight'])) {
+		$userHeight = $_GET['userheight'];
+	}
+
+	if (!empty($userWidth) && !empty($userHeight)) {
+		if (
+			($userWidth == "all" || $userHeight == "all") ||
+			(!is_numeric($userWidth) || !is_numeric($userHeight))
+		) {
+			$userWidth  = "";
+			$userHeight = "";
+		}
+	} else if (!empty($_COOKIE['width']) && is_numeric($_COOKIE['width']) && !empty($_COOKIE['height']) && is_numeric($_COOKIE['height'])) {
+		$userWidth  = $_COOKIE['width'];
+		$userHeight = $_COOKIE['height'];
+	}
+	if (!empty($userWidth) && !empty($userHeight) && isset($_COOKIE['DisableImageResizing']) && $_COOKIE['DisableImageResizing'] == "yes") {
+		$albumWhere .= " AND images.width >= '".$userWidth."' AND images.height >= '".$userHeight."'";
+	}
+	if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes") || $option == "random") {
+		$albumWhere .= ' AND `nsfw`= 0';
+	}
+
   switch (strtolower($sortdirection)) {
     case 'desc':
     default:

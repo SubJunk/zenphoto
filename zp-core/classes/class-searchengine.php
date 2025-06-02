@@ -1155,7 +1155,14 @@ class SearchEngine {
 											$target = $singlesearchstring;
 										}
 										$fieldsql = ' `' . $fieldname . '` ' . strtoupper($this->pattern['type']) . ' ' . $_zp_db->quote($this->pattern['open'] . $target . $this->pattern['close']);
-										$sql = 'SELECT @serachtarget AS name, @serachfield AS field, `id` AS `objectid` FROM ' . $_zp_db->prefix($tbl) . ' WHERE (' . $fieldsql . ') ORDER BY `id`';
+
+										$nsfwQuery = '';
+										if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
+											$nsfwQuery = 'nsfw=0 AND ';
+										} else if ($_COOKIE['EnableNSFW'] == "yes") {
+											$nsfwQuery = 'nsfw=1 AND ';
+										}
+										$sql = 'SELECT @serachtarget AS name, @serachfield AS field, `id` AS `objectid` FROM ' . $_zp_db->prefix($tbl) . ' WHERE ' . $nsfwQuery . ' (' . $fieldsql . ') ORDER BY `id`';
 								}
 								$objects = $_zp_db->queryFullArray($sql, false);
 								if (is_array($objects)) {
@@ -1961,14 +1968,25 @@ class SearchEngine {
 	private function cacheSearch($criteria, $found) {
 		global $_zp_db;
 		if (SEARCH_CACHE_DURATION) {
+			$nsfwQuery = '';
+			$nsfwStatus = 1;
+			if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
+				$nsfwStatus = 0;
+				$nsfwQuery = ' AND nsfw=0';
+			} else {
+				$nsfwStatus = 1;
+				$nsfwQuery = ' AND nsfw=1';
+			}
+
 			$criteria = serialize(serialize($criteria));
 			$sql = 'SELECT `id`, `data`, `date` FROM ' . $_zp_db->prefix('search_cache') . ' WHERE `criteria` = ' . $_zp_db->quote($criteria);
+			$sql .= $nsfwQuery;
 			$result = $_zp_db->querySingleRow($sql);
 			if ($result) {
 				$sql = 'UPDATE ' . $_zp_db->prefix('search_cache') . ' SET `data` = ' . $_zp_db->quote(serialize($found)) . ', `date` = ' . $_zp_db->quote(date('Y-m-d H:m:s')) . ' WHERE `id` = ' . $result['id'];
 				$_zp_db->query($sql);
 			} else {
-				$sql = 'INSERT INTO ' . $_zp_db->prefix('search_cache') . ' (criteria, data, date) VALUES (' . $_zp_db->quote($criteria) . ', ' . $_zp_db->quote(serialize($found)) . ', ' . $_zp_db->quote(date('Y-m-d H:m:s')) . ')';
+				$sql = 'INSERT INTO ' . $_zp_db->prefix('search_cache') . ' (criteria, data, date, nsfw) VALUES (' . $_zp_db->quote($criteria) . ',' . $_zp_db->quote(serialize($found)) . ',' . $_zp_db->quote(date('Y-m-d H:m:s')) . ', ' . $nsfwStatus . ')';
 				$_zp_db->query($sql);
 			}
 		}
@@ -1984,6 +2002,9 @@ class SearchEngine {
 		if (SEARCH_CACHE_DURATION) {
 			$criteria = serialize(serialize($criteria));
 			$sql = 'SELECT `id`, `date`, `data` FROM ' . $_zp_db->prefix('search_cache') . ' WHERE `criteria` = ' . $_zp_db->quote($criteria);
+			if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
+				$sql .= ' AND nsfw=0';
+			}
 			$result = $_zp_db->querySingleRow($sql);
 			if ($result) {
 				if ((time() - strtotime($result['date'])) > SEARCH_CACHE_DURATION * 60) {

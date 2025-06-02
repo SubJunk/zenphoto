@@ -1297,6 +1297,22 @@ class AlbumBase extends MediaObject {
 	 * @return array
 	 */
 	protected function sortImageArray($images, $sorttype, $sortdirection, $mine = NULL) {
+		global $userWidth;
+		global $userHeight;
+
+		$page = "";
+		if (isset($_GET['page'])) {
+			$page = $_GET['page'];
+		}
+
+		$extraWhere = '';
+		if (!empty($userWidth) && !empty($userHeight) && isset($_COOKIE['DisableImageResizing']) && $_COOKIE['DisableImageResizing'] == "yes") {
+			$extraWhere .= ' AND `width`>= '.$userWidth.' AND `height`>= '.$userHeight;
+		}
+		if ($page != 'edit' && (!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
+			$extraWhere .= ' AND `nsfw`= 0';
+		}
+
 		global $_zp_db;
 		if (is_null($mine)) {
 			$mine = $this->isMyItem(LIST_RIGHTS | MANAGE_ALL_ALBUM_RIGHTS);
@@ -1316,7 +1332,7 @@ class AlbumBase extends MediaObject {
 				$order = $this->getSortDirection('image');
 			}
 		}
-		$result = $_zp_db->query($sql = "SELECT * FROM " . $_zp_db->prefix("images") . " WHERE `albumid`= " . $this->getID() . ' ORDER BY ' . $sortkey . ' ' . $sortdirection);
+		$result = $_zp_db->query($sql = "SELECT * FROM " . $_zp_db->prefix("images") . " WHERE `albumid`= " . $this->getID() . $extraWhere . ' ORDER BY ' . $sortkey . ' ' . $sortdirection);
 		$results = array();
 		while ($row = $_zp_db->fetchAssoc($result)) {
 			$filename = $row['filename'];

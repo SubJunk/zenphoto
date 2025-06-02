@@ -1887,6 +1887,7 @@ $upgrade = $versioncheck['upgrade_text'];
 		`user` varchar(64) DEFAULT NULL,
 		`password` varchar(64) DEFAULT NULL,
 		`password_hint` text,
+		`nsfw` int(1) NOT NULL default '0',
 		PRIMARY KEY (`id`),
 		KEY (`albumid`),
 		UNIQUE KEY (filename(191), albumid)
@@ -2370,6 +2371,9 @@ $upgrade = $versioncheck['upgrade_text'];
 						$sql_statements[] = "ALTER TABLE $tbl_albums ADD INDEX albums_parentid (`parentid`)";
 						$sql_statements[] = "ALTER TABLE $tbl_albums ADD INDEX albums_dynamic_parentid (`dynamic`, `parentid`)";
 						$sql_statements[] = "ALTER TABLE $tbl_albums ADD INDEX albums_dynamic_parentid_show (`dynamic`, `parentid`, `show`)";
+
+						//1.6.9 (unreleased)
+						$sql_statements[] = 'ALTER TABLE ' . $tbl_images . ' ADD COLUMN `nsfw` int (1)';
 
 						// do this last incase there are any field changes of like names!
 						foreach ($_zp_exifvars as $key => $exifvar) {
