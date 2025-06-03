@@ -84,6 +84,7 @@ include('includes/footer.php');
 					?>
 					<div id="LoginContainer">
 						<?php printUserLogin_out('','',NULL,' '); ?>
+						<?php callUserFunction('printUserLogin_out', '', ''); ?>
 					</div>
 					<?php
 				}
@@ -92,7 +93,7 @@ include('includes/footer.php');
 			<div id="AboveContentText">
 				<?php if (!zp_loggedin()) { ?><a href="/page/register/" id="RegisterLink"></a><?php } ?>
 				<?php include('includes/resolutionpreferences.php'); ?>
-				<a href="http://www.dualmonitorbackgrounds.com/albums/nature/sellagroup-2.jpg">W</a>elcome to the largest dedicated quad monitor backgrounds website on the internet.<br>
+				Welcome to the largest dedicated quad monitor backgrounds website on the internet.<br>
 				Quad monitor backgrounds (AKA quad screen wallpapers) are backgrounds that span four screens.  <?php if (!$welcomeTextDisplay) { ?><span id="ExpandWelcomeTextContainer">(<a href="javascript:void(0);" class="ExpandWelcomeText">Expand</a>)</span><?php } ?>
 				<span id="WelcomeTextLower"<?php if ($welcomeTextDisplay) { ?> style="display:inline;"<?php } ?>>
 					<br>If you are here it is assumed you have four monitors. All our quad monitor wallpapers are free and many more are added all the time, usually every day.<br>

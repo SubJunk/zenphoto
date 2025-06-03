@@ -633,14 +633,9 @@ label {
 
 /* Admin Toolbox
 ------------------------------ */
-#zp__admin_module, #zp__admin_data{
-	position:fixed;
-	right:0;
-	top:0;
-	border-left: 1px solid #CCC;
-	border-bottom: 1px solid #CCC;
-	background: #fff;
-	width:120px;
+#zp__admin_module{
+	height: unset;
+	background: unset;
 }
 #zp__admin_data{
 	top: 23px;
@@ -662,6 +657,10 @@ label {
 #zp__admin_module h3 a {
 	color:			#6e6e6e;
 	font-size:		14px;
+}
+
+#zp__admin_info {
+	display: none;
 }
 
 /* Logo */
