@@ -68,11 +68,7 @@ if (empty($cookies)) {
 					<?php
 				}
 				if (function_exists('printUserLogin_out')) {
-					?>
-					<div id="LoginContainer">
-						<?php callUserFunction('printUserLogin_out', '', '', NULL, ' '); ?>
-					</div>
-					<?php
+					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
 				}
 				?>
 			</div>

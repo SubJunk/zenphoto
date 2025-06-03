@@ -23,11 +23,7 @@ include('includes/footer.php');
 					printSearchForm('', 'search', '', ' ');
 				}
 				if (function_exists('printUserLogin_out')) {
-					?>
-					<div id="LoginContainer">
-						<?php callUserFunction('printUserLogin_out', '', '', NULL, ' '); ?>
-					</div>
-					<?php
+					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
 				}
 				?>
 			</div>

@@ -25,13 +25,9 @@ if (function_exists('printContactForm')) {
 
 						<?php
 					}
-					if (function_exists('printUserLogin_out')) {
-						?>
-						<div id="LoginContainer">
-						<?php callUserFunction('printUserLogin_out', '', '', NULL, ' '); ?>
-						</div>
-						<?php
-					}
+				if (function_exists('printUserLogin_out')) {
+					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
+				}
 					?>
 				</div>
 				<div id="AboveContentText">

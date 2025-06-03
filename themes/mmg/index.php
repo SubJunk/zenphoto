@@ -79,13 +79,11 @@ include('includes/footer.php');
 		<div id="main">
 			<div id="gallerytitle">
 				<a href="/" id="Logo"></a>
-				<?php if (getOption('Allow_search')) { printSearchForm('', 'search', '', ' '); }
+				<?php
+				if (getOption('Allow_search')) { printSearchForm('', 'search', '', ' '); }
+
 				if (function_exists('printUserLogin_out')) {
-					?>
-					<div id="LoginContainer">
-						<?php callUserFunction('printUserLogin_out', '', '', NULL, ' '); ?>
-					</div>
-					<?php
+					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
 				}
 				?>
 			</div>
