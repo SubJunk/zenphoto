@@ -10,7 +10,7 @@ include('includes/footer.php');
 <html>
 	<head>
 		<?php zp_apply_filter('theme_head'); ?>
-		<title>Password | <?php printGalleryTitle(); ?></title>
+		<title>Login | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 	</head>
 	<body>
@@ -22,11 +22,11 @@ include('includes/footer.php');
 						<?php printHomeLink('', ' | '); ?>
 						<a href="<?php echo html_encode(getGalleryIndexURL()); ?>" title="<?php echo gettext('Gallery Index'); ?>"><?php printGalleryTitle(); ?></a>
 					</span> |
-					<?php echo gettext("A password is required for the page you requested"); ?>
+					<?php echo gettext("Login"); ?>
 				</h2>
 			</div>
 			<div id="padbox">
-				<?php printPasswordForm($hint, $show, false); ?>
+				<?php printPasswordForm('', true, false); ?>
 			</div>
 		</div>
 		<?php
