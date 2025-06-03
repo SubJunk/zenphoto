@@ -28,7 +28,7 @@ if (function_exists('printContactForm')) {
 					if (function_exists('printUserLogin_out')) {
 						?>
 						<div id="LoginContainer">
-							<?php printUserLogin_out('','',NULL,' '); ?>
+						<?php callUserFunction('printUserLogin_out', '', '', NULL, ' '); ?>
 						</div>
 						<?php
 					}
