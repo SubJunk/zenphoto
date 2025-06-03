@@ -735,15 +735,8 @@ background-color: white;
 	height:10px;
 }
 
-/* Login Form */
-
-#RegisterLink {
-	width:			102px;
-	height:			35px;
-	display:		block;
-	float:			right;
-	background-image:	url(../images/register.png);
-	margin:			2px 0 0 20px;
+.registerOrLoginLinks {
+	float: right;
 }
 
 /* Archive View

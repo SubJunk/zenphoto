@@ -79,14 +79,16 @@ include('includes/footer.php');
 		<div id="main">
 			<div id="gallerytitle">
 				<a href="/" id="Logo"></a>
+				<div class="registerOrLoginLinks">
+					<?php
+					callUserFunction('registerUser::printLink', gettext('Register'), '', ' | ');
+					callUserFunction('printUserLogin_out', '', ' ', NULL, ' ');
+					?>
+				</div>
 				<?php if (getOption('Allow_search')) { printSearchForm('', 'search', '', ' '); } ?>
 			</div>
 			<div id="AboveContentText">
-				<?php
-				callUserFunction('registerUser::printLink', gettext('Register'), '', ' | ');
-				callUserFunction('printUserLogin_out', '', ' ');
-				include('includes/resolutionpreferences.php');
-				?>
+				<?php include('includes/resolutionpreferences.php'); ?>
 				Welcome to the largest dedicated quad monitor backgrounds website on the internet.<br>
 				Quad monitor backgrounds (AKA quad screen wallpapers) are backgrounds that span four screens.  <?php if (!$welcomeTextDisplay) { ?><span id="ExpandWelcomeTextContainer">(<a href="javascript:void(0);" class="ExpandWelcomeText">Expand</a>)</span><?php } ?>
 				<span id="WelcomeTextLower"<?php if ($welcomeTextDisplay) { ?> style="display:inline;"<?php } ?>>
