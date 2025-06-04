@@ -66,12 +66,15 @@ function getAlbumStatistic($number = 5, $option = '', $albumfolder = '', $thresh
       $sortdir = 'ASC';
       break;
   }
+	if (empty($albumWhere)) {
+		$albumWhere = ' WHERE ';
+	} else {
+		$albumWhere .= ' AND ';
+	}
+
+	$albumWhere .= 'is_official != 1 AND has_image = 1 ';
+
   if (($option == 'toprated' || $option == 'mostrated' || $option == 'popular') && $threshold > 0) {
-    if (empty($albumWhere)) {
-      $albumWhere = ' WHERE ';
-    } else {
-      $albumWhere .= ' AND ';
-    }
     if (($option == 'toprated' || $option == 'mostrated') && $threshold > 0) {
       $albumWhere .= 'total_votes >= ' . $threshold;
     }
@@ -79,6 +82,7 @@ function getAlbumStatistic($number = 5, $option = '', $albumfolder = '', $thresh
       $albumWhere .= 'hitcounter >= ' . $threshold;
     }
   }
+
   switch ($option) {
     case "popular":
       $sortorder = "hitcounter";

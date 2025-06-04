@@ -1157,6 +1157,10 @@ class AlbumBase extends MediaObject {
 	function setOwner($owner) {
 		$this->set('owner', $owner);
 	}
+	
+	function setHasImage() {
+		$this->set('has_image', '1');
+	}
 
 	/**
 	 *

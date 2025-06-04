@@ -273,7 +273,7 @@ class Gallery {
 	 *
 	 * @return  array
 	 */
-	function getAlbums($page = 0, $sorttype = null, $sortdirection = null, $care = true, $mine = NULL) {
+	function getAlbums($page = 0, $sorttype = null, $sortdirection = null, $care = true, $mine = NULL, $archivepage = false) {
 
 		// Have the albums been loaded yet?
 		if ($mine || is_null($this->albums) || $care && $sorttype . $sortdirection !== $this->lastalbumsort) {
@@ -289,7 +289,7 @@ class Gallery {
 			}
 			$albumnames = $this->loadAlbumNames();
 			$key = $this->getAlbumSortKey($sorttype);
-			$albums = $this->sortAlbumArray(NULL, $albumnames, $key, $sortdirection, $mine);
+			$albums = $this->sortAlbumArray(NULL, $albumnames, $key, $sortdirection, $mine, $archivepage);
 
 			// Store the values
 			$this->albums = $albums;
@@ -1011,7 +1011,7 @@ class Gallery {
 	 * @author Todd Papaioannou (lucky@luckyspin.org)
 	 * @since 1.0.0
 	 */
-	function sortAlbumArray($parentalbum, $albums, $sortkey = '`sort_order`', $sortdirection = NULL, $mine = NULL) {
+	function sortAlbumArray($parentalbum, $albums, $sortkey = '`sort_order`', $sortdirection = NULL, $mine = NULL, $archivepage = false) {
 		global $_zp_db;
 		if (count($albums) == 0) {
 			return array();
@@ -1039,7 +1039,14 @@ class Gallery {
 			}
 		}
 		$sortkey = $_zp_db->quote($sortkey, false);
-		$sql = 'SELECT * FROM ' . $_zp_db->prefix("albums") . ' WHERE `parentid`' . $albumid . ' ORDER BY ' . $sortkey . ' ' . $sortdirection;
+		$sql = 'SELECT * FROM ' . $_zp_db->prefix("albums") . ' WHERE `parentid`' . $albumid;
+
+		if ($archivepage == true) {
+			$sql .= ' AND is_official=0 && has_image=1';
+		}
+
+		$sql .= ' ORDER BY ' . $sortkey . ' ' . $sortdirection;
+
 		$result = $_zp_db->query($sql);
 		$results = array();
 		//	check database aganist file system

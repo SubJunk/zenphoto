@@ -107,6 +107,9 @@ if (isset($_POST['processed'])) {
 								}
 								$image->setLastChangeUser($_zp_current_admin_obj->getUser());
 								$image->save();
+
+								$album->setHasImage();
+								$album->save();
 							}
 						} else if (is_zip($name)) {
 							unzip($tmp_name, $targetPath);

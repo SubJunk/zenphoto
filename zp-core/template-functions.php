@@ -779,7 +779,7 @@ function getCurrentTheme() {
  * @return bool
  * @since 0.6
  */
-function next_album($all = false, $mine = NULL) {
+function next_album($all = false, $mine = NULL, $archivepage = false) {
 	global $_zp_albums, $_zp_gallery, $_zp_current_album, $_zp_page, $_zp_current_album_restore, $_zp_current_search;
 	if (is_null($_zp_albums)) {
 		if (in_context(ZP_SEARCH)) {
@@ -787,7 +787,7 @@ function next_album($all = false, $mine = NULL) {
 		} else if (in_context(ZP_ALBUM)) {
 			$_zp_albums = $_zp_current_album->getAlbums($all ? 0 : $_zp_page, NULL, NULL, true, $mine);
 		} else {
-			$_zp_albums = $_zp_gallery->getAlbums($all ? 0 : $_zp_page, NULL, NULL, true, $mine);
+			$_zp_albums = $_zp_gallery->getAlbums($all ? 0 : $_zp_page, NULL, NULL, true, $mine, $archivepage);
 		}
 		if (empty($_zp_albums)) {
 			return NULL;
