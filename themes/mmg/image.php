@@ -203,9 +203,7 @@ if (empty($cookies)) {
 				<div class="subPadbox">
 					<h2>Rating</h2>
 					<?php
-					if (function_exists('printRating')) {
-						printRating();
-					}
+					callUserFunction('printRating');
 					if (function_exists('printAddToFavorites')) {
 						echo '<div style="margin-top:10px;">';
 						printAddToFavorites($_zp_current_image);
