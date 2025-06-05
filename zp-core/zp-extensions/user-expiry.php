@@ -11,7 +11,7 @@
  * warning him of the impending expiration.
  *
  * There is a subtab added to the "admin" tab for managing expirations.
- * A list of users without <var>ADMIN_RITGHTS</var> will be presented indicating each
+ * A list of users without <var>ADMIN_RIGHTS</var> will be presented indicating each
  * user's expiry date. Dates within one week of expiry are shown in orange,
  * expired dates are shown in red.
  *
