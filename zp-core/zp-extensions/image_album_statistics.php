@@ -581,7 +581,7 @@ function printImageStatistic($number, $option, $albumfolder = '', $showtitle = f
 			$imageAlbumTitle = $album->getTitle();
 			$imageAlbumFolder = $image->getAlbumName();
 
-			echo ' in <a href="/'.$imageAlbumFolder.'/">'.$imageAlbumTitle.'</a></h3>\n';
+			echo ' in <a href="/'.$imageAlbumFolder.'/">'.$imageAlbumTitle.'</a></h3>'."\n";
 		}
 		if ($showdate) {
 			echo "<p>" . zpFormattedDate(DATETIME_DISPLAYFORMAT, strtotime($image->getDateTime())) . "</p>";
