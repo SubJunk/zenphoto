@@ -575,7 +575,13 @@ function printImageStatistic($number, $option, $albumfolder = '', $showtitle = f
 
 		if ($showtitle) {
 			echo '<h3><a href="' . html_encode($image->getLink()) . '" title="' . html_encode($image->getTitle()) . "\">\n";
-			echo $image->getTitle() . "</a></h3>\n";
+
+			echo $image->getTitle()."</a>";
+			$album = $image->getAlbum();
+			$imageAlbumTitle = $album->getTitle();
+			$imageAlbumFolder = $image->getAlbumName();
+
+			echo ' in <a href="/'.$imageAlbumFolder.'/">'.$imageAlbumTitle.'</a></h3>\n';
 		}
 		if ($showdate) {
 			echo "<p>" . zpFormattedDate(DATETIME_DISPLAYFORMAT, strtotime($image->getDateTime())) . "</p>";
