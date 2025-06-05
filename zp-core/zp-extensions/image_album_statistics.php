@@ -571,7 +571,7 @@ function printImageStatistic($number, $option, $albumfolder = '', $showtitle = f
 				break;
 		}
 
-		echo '<span class="imageResolutionContainer"><a href="' . html_encode(pathurlencode($image->getImageLink())) . '" title="' . html_encode($image->getTitle()) . '">'.$image->getWidth().'x'.$image->getHeight().'</a></span>';
+		echo '<span class="imageResolutionContainer"><a href="' . html_encode(pathurlencode($image->getLink())) . '" title="' . html_encode($image->getTitle()) . '">'.$image->getWidth().'x'.$image->getHeight().'</a></span>';
 
 		if ($showtitle) {
 			echo '<h3><a href="' . html_encode($image->getLink()) . '" title="' . html_encode($image->getTitle()) . "\">\n";
