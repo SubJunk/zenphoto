@@ -19,9 +19,8 @@ include('includes/footer.php');
 			<div id="gallerytitle">
 				<h2>
 					<span>
-						<?php printHomeLink('', ' | '); ?>
-						<a href="<?php echo html_encode(getGalleryIndexURL()); ?>" title="<?php echo gettext('Gallery Index'); ?>"><?php printGalleryTitle(); ?></a>
-					</span> |
+						<?php printHomeLink('', ' | '); printGalleryIndexURL(' | ', getGalleryTitle()); ?>
+					</span>
 					<?php echo gettext("Login"); ?>
 				</h2>
 			</div>
