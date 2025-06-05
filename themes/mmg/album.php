@@ -144,7 +144,7 @@ if (empty($cookies)) {
 				echo '				</ul>
 							</div><div style="clear:left;"></div>
 						</div>' .
-						printPageListWithNav("&laquo; " . gettext("prev"), gettext("next") . " &raquo;") .
+						printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
 						printTags("links", gettext("<strong>Tags:</strong>") . " ", "taglist", "").
 						$adBoxBottom.'
 					</div>

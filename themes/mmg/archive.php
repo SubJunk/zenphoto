@@ -116,7 +116,7 @@ $adBoxTopRight = '';
 										</div>
 									</div>
 								<?php
-								printPageListWithNav("&laquo; " . gettext("prev"), gettext("next") . " &raquo;");
+								printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
 								echo $adBoxBottom;
 							}
 						?>

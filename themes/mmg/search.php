@@ -96,7 +96,7 @@ if (empty($cookies)) {
 				if ($c == 0) {
 					echo "<p>" . gettext("Sorry, no image matches found. Try refining your search.") . "</p>";
 				} else {
-					printPageListWithNav("&laquo; " . gettext("prev"), gettext("next") . " &raquo;");
+					printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
 				}
 				echo $adBoxBottom;
 				?>
