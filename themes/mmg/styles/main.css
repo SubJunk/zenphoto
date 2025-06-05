@@ -235,7 +235,7 @@ ul.pagelist {
 }
 ul.pagelist li {
 	font-size: 20px;
-	padding: 0;
+	padding: 8px;
 	margin: 0 !important;
 	display: inline;
 	float: left;
