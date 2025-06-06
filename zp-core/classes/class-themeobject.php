@@ -64,6 +64,14 @@ class ThemeObject extends PersistentObject {
 	function setParentID($v) {
 		$this->set('parentid', $v);
 	}
+
+	function getAdSlot() {
+		return get_language_string($this->get('adslot'));
+	}
+
+	function getAdClient() {
+		return get_language_string($this->get('adclient'));
+	}
 	
 	/**
 	 * Returns the parent item object if there is any. Here returns always null. Hierachical child classes need to implement this accordingly

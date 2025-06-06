@@ -55,6 +55,14 @@ class MediaObject extends ThemeObject {
 		$this->set('sort_order', $sortorder);
 	}
 
+	function getAdSlot() {
+		return get_language_string($this->get('adslot'));
+	}
+
+	function getAdClient() {
+		return get_language_string($this->get('adclient'));
+	}
+
 	/**
 	 * Returns the guest user
 	 *
