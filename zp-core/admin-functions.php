@@ -1520,6 +1520,37 @@ function printAdminHeader($tab, $subtab = NULL) {
 								?>
 							</td>
 						</tr>
+						<tr>
+							<td colspan="2" style="padding-bottom:20px;">
+								<br />
+								<h1 style="color:#c66;margin-bottom:10px;">Google AdSense:</h1>
+								<strong>Note:</strong> Your ad must be 970x90. If you have any questions, see the <a href="/page/faq/#AdSenseInstructions">full instructions</a>.
+							</td>
+						</tr>
+						<tr>
+							<td align="left" valign="top">
+								<?php echo gettext("Ad Client:"); ?>
+							</td>
+							<td>
+								<?php print_language_string_list($album->getAdClient(), $prefix."adclient"); ?>
+							</td>
+						</tr>
+						<tr>
+							<td align="left" valign="top">
+								<?php echo gettext("Ad Slot:"); ?>
+							</td>
+							<td>
+								<?php print_language_string_list($album->getAdSlot(), $prefix."adslot"); ?>
+							</td>
+						</tr>
+						<tr>
+							<td align="left" valign="top">
+								<?php echo gettext("Guide:"); ?>
+							</td>
+							<td>
+								<img src="/themes/mmg/images/adsense.png" alt="Google AdSense guide" />
+							</td>
+						</tr>
 
 						<?php
 						if (is_null($album->getParent())) {
@@ -2308,6 +2339,8 @@ function printAdminHeader($tab, $subtab = NULL) {
 		$album->setTags($tags);
 		$album->setDateTime(sanitize($_POST[$prefix . "albumdate"]));
 		$album->setLocation(process_language_string_save($prefix . 'albumlocation', 3));
+		$album->setAdClient(process_language_string_save($prefix.'adclient', 3));
+		$album->setAdSlot(process_language_string_save($prefix.'adslot', 3));
 		if (isset($_POST[$prefix . 'thumb'])) {
 			$album->setThumb(sanitize($_POST[$prefix . 'thumb']));
 		}
