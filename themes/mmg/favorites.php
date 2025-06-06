@@ -142,7 +142,6 @@ if (empty($cookies)) {
 		<?php
 		getFooter(true, 'Favorites');
 		zp_apply_filter('theme_body_close');
-		include('includes/piwik.php');
 		?>
 	</body>
 </html>

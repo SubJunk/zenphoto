@@ -225,7 +225,6 @@ if (empty($cookies)) {
 		<?php
 		getFooter(false, 'Image ' . getBareImageTitle() . ' (' . getFullImageURL() . ')');
 		zp_apply_filter('theme_body_close');
-		include('includes/piwik.php');
 		?>
 	</body>
 </html>

@@ -19,6 +19,5 @@ if (!defined('WEBPATH')) die();
 		?>
 	</div>
 <?php zp_apply_filter('theme_body_close'); ?>
-<?php include('includes/piwik.php'); ?>
 </body>
 </html>

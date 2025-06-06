@@ -352,7 +352,6 @@ include('includes/footer.php');
 		<?php
 		getFooter(false, 'Homepage');
 		zp_apply_filter('theme_body_close');
-		include('includes/piwik.php');
 		?>
 	</body>
 </html>

@@ -80,7 +80,6 @@ if (function_exists('printRegistrationForm')) {
 			<?php
 			getFooter();
 			zp_apply_filter('theme_body_close');
-			include('includes/piwik.php');
 			?>
 		</body>
 	</html>
