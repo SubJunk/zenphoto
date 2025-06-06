@@ -88,14 +88,25 @@ include('includes/footer.php');
 				<?php if (getOption('Allow_search')) { printSearchForm('', 'search', '', ' '); } ?>
 			</div>
 			<div id="AboveContentText">
-				<?php include('includes/resolutionpreferences.php'); ?>
-				Welcome to the largest dedicated quad monitor backgrounds website on the internet.<br>
-				Quad monitor backgrounds (AKA quad screen wallpapers) are backgrounds that span four screens.  <?php if (!$welcomeTextDisplay) { ?><span id="ExpandWelcomeTextContainer">(<a href="javascript:void(0);" class="ExpandWelcomeText">Expand</a>)</span><?php } ?>
+				<?php
+					include('includes/resolutionpreferences.php');
+					$siteVariantLower = "dual";
+					$siteVariantCapital = "Dual";
+					if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+						$siteVariantCapital = "Triple";
+						$siteVariantLower = "triple";
+					} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+						$siteVariantCapital = "Quad";
+						$siteVariantLower = "quad";
+					}
+				?>
+				Welcome to the largest dedicated <?php echo $siteVariantLower ?> monitor backgrounds website on the internet.<br>
+				<?php echo $siteVariantCapital ?> monitor backgrounds (AKA <?php echo $siteVariantLower ?> screen wallpapers) are backgrounds that span four screens.  <?php if (!$welcomeTextDisplay) { ?><span id="ExpandWelcomeTextContainer">(<a href="javascript:void(0);" class="ExpandWelcomeText">Expand</a>)</span><?php } ?>
 				<span id="WelcomeTextLower"<?php if ($welcomeTextDisplay) { ?> style="display:inline;"<?php } ?>>
-					<br>If you are here it is assumed you have four monitors. All our quad monitor wallpapers are free and many more are added all the time, usually every day.<br>
-					New features are always being developed and if you have any quad monitor backgrounds you would like to see added to the site just register and upload them.<br>
+					<br>If you are here it is assumed you have four monitors. All our <?php echo $siteVariantLower ?> monitor wallpapers are free and many more are added all the time, usually every day.<br>
+					New features are always being developed and if you have any <?php echo $siteVariantLower ?> monitor backgrounds you would like to see added to the site just register and upload them.<br>
 					So please get involved with the site by rating wallpapers and support the artists (many of whom frequent this site) by commenting on the images. Critique is also encouraged.<br>
-					To get started, just click on a category at the bottom of this page or use the search box up top and enjoy our amazing range of quad monitor backgrounds! (<a href="javascript:void(0);" class="ShrinkWelcomeText">Collapse</a>)
+					To get started, just click on a category at the bottom of this page or use the search box up top and enjoy our amazing range of <?php echo $siteVariantLower ?> monitor backgrounds! (<a href="javascript:void(0);" class="ShrinkWelcomeText">Collapse</a>)
 				</span>
 			</div>
 			<div id="padbox" class="noAdBottom">

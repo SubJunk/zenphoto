@@ -22,14 +22,13 @@ if (isset($_COOKIE['EnableNSFW']) && $_COOKIE['EnableNSFW'] == "yes") {
 }
 
 if (!empty($userWidth) && !empty($userHeight)) {
-	$domain = 'quadmonitorbackgrounds.com';
 	if (is_numeric($userWidth) && is_numeric($userHeight)) {
 		$inTwoMonths = 60 * 60 * 24 * 60 + time();
-		setcookie('width' , $userWidth , $inTwoMonths, '/', $domain);
-		setcookie('height', $userHeight, $inTwoMonths, '/', $domain);
+		setcookie('width' , $userWidth , $inTwoMonths, '/');
+		setcookie('height', $userHeight, $inTwoMonths, '/');
 	} elseif ($userWidth == "all" && $userHeight == "all") {
-		setcookie('width' , "", time() - 3600, '/', $domain);
-		setcookie('height', "", time() - 3600, '/', $domain);
+		setcookie('width' , "", time() - 3600, '/');
+		setcookie('height', "", time() - 3600, '/');
 		$userWidth  = "";
 		$userHeight = "";
 	}

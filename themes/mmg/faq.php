@@ -32,7 +32,7 @@ include('includes/footer.php');
 				<span class="subHeading">Frequently Asked Questions</span>
 			</div>
 			<div id="padbox">
-				<h2>How can I make a quad monitor background span across screens?</h2>
+				<h2>How can I make an image span across screens?</h2>
 				<ul>
 					<li>
 						On Windows 7:
