@@ -191,19 +191,19 @@ include('includes/footer.php');
 					echo '</div></div>';
 				?>
 				<span class="AfterImagesBreak"></span>
-				<div  class="pagelist">
+				<div class="pagelist">
 					<ul class="pagelist">
 						<?php if ($nextPage == 2) { ?>
 							<li class="prev">
-								<a id="albumButtonBackOff"></a>
+								« prev
 							</li>
 						<?php } else { ?>
 							<li class="prev">
-								<a href="/?latestImagesPage=<?php echo $previousPage; ?>" id="albumButtonBackOn"></a>
+								<a href="/?latestImagesPage=<?php echo $previousPage; ?>">« prev</a>
 							</li>
 						<?php } ?>
 						<li class="next">
-							<a href="/?latestImagesPage=<?php echo $nextPage; ?>" id="albumButtonNextOn"></a>
+							<a href="/?latestImagesPage=<?php echo $nextPage; ?>">next »</a>
 						</li>
 					</ul>
 				</div>
