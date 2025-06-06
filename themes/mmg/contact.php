@@ -42,7 +42,7 @@ if (function_exists('printContactForm')) {
 						if (isset($_GET['subject'])) {
 							$subject =  sanitize($_GET['subject'], 3);
 						}
-						printContactForm($subject);
+						contactForm::printContactForm($subject);
 					?>
 				</div>
 			</div>
