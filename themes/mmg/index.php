@@ -95,8 +95,7 @@ include('includes/footer.php');
 					<br>If you are here it is assumed you have four monitors. All our quad monitor wallpapers are free and many more are added all the time, usually every day.<br>
 					New features are always being developed and if you have any quad monitor backgrounds you would like to see added to the site just register and upload them.<br>
 					So please get involved with the site by rating wallpapers and support the artists (many of whom frequent this site) by commenting on the images. Critique is also encouraged.<br>
-					To get started, just click on a category at the bottom of this page or use the search box up top and enjoy our amazing range of quad monitor backgrounds!<br>
-					We really appreciate donations which go to helping us pay for server costs. (<a href="javascript:void(0);" class="ShrinkWelcomeText">Collapse</a>)
+					To get started, just click on a category at the bottom of this page or use the search box up top and enjoy our amazing range of quad monitor backgrounds! (<a href="javascript:void(0);" class="ShrinkWelcomeText">Collapse</a>)
 				</span>
 			</div>
 			<div id="padbox" class="noAdBottom">
