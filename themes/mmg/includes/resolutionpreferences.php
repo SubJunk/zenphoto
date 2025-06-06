@@ -2,6 +2,12 @@
 	<?php
 	echo $resolutionPreferences;
 	$strongClose = "";
+	$multiplier = 2;
+	if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+		$multiplier = 3;
+	} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+		$multiplier = 4;
+	}
 	?>
 	<span class="AfterImagesBreak"></span>
 	<div id="ResolutionPreferencesOptions">
@@ -10,21 +16,82 @@
 			<a href="?userwidth=all&amp;userheight=all"><?php if (empty($userResolution)) { echo '<strong>'; $strongClose = '</strong>'; } ?>Everything<?php echo $strongClose; $strongClose = ""; ?></a> Show all images<br>
 		<?php } else { ?>
 			<a href="?userwidth=all&amp;userheight=all"><?php if (empty($userResolution)) { echo '<strong>'; $strongClose = '</strong>'; } ?>Original<?php echo $strongClose; $strongClose = ""; ?></a> Show original sizes<br>
-		<?php } ?>
-		<a href="?userwidth=15360&amp;userheight=2160"><?php if ($userResolution == '15360x2160') { echo '<strong>'; $strongClose = '</strong>'; } ?>15360x2160<?php echo $strongClose; $strongClose = ""; ?></a> (3840x2160x4)<br>
-		<a href="?userwidth=11520&amp;userheight=1800"><?php if ($userResolution == '11520x1800') { echo '<strong>'; $strongClose = '</strong>'; } ?>11520x1800<?php echo $strongClose; $strongClose = ""; ?></a> (2880x1800x4)<br>
-		<a href="?userwidth=10240&amp;userheight=1440"><?php if ($userResolution == '10240x1440') { echo '<strong>'; $strongClose = '</strong>'; } ?>10240x1440<?php echo $strongClose; $strongClose = ""; ?></a> (2560x1440x4)<br>
-		<a href="?userwidth=7680&amp;userheight=1200" ><?php if ($userResolution == '7680x1200' ) { echo '<strong>'; $strongClose = '</strong>'; } ?>7680x1200<?php  echo $strongClose; $strongClose = ""; ?></a> (1920x1200x4)<br>
-		<a href="?userwidth=7680&amp;userheight=1080" ><?php if ($userResolution == '7680x1080' ) { echo '<strong>'; $strongClose = '</strong>'; } ?>7680x1080<?php  echo $strongClose; $strongClose = ""; ?></a> (1920x1080x4)<br>
-		<a href="?userwidth=6720&amp;userheight=1050" ><?php if ($userResolution == '6720x1050' ) { echo '<strong>'; $strongClose = '</strong>'; } ?>6720x1050<?php  echo $strongClose; $strongClose = ""; ?></a> (1680x1050x4)<br>
-		<a href="?userwidth=6400&amp;userheight=1200" ><?php if ($userResolution == '6400x1200' ) { echo '<strong>'; $strongClose = '</strong>'; } ?>6400x1200<?php  echo $strongClose; $strongClose = ""; ?></a> (1600x1200x4)<br>
-		<a href="?userwidth=6400&amp;userheight=900"  ><?php if ($userResolution == '6400x900'  ) { echo '<strong>'; $strongClose = '</strong>'; } ?>6400x900<?php   echo $strongClose; $strongClose = ""; ?></a> (1600x900x4)<br>
-		<a href="?userwidth=5760&amp;userheight=900"  ><?php if ($userResolution == '5760x900'  ) { echo '<strong>'; $strongClose = '</strong>'; } ?>5760x900<?php   echo $strongClose; $strongClose = ""; ?></a> (1440x900x4)<br>
-		<a href="?userwidth=5464&amp;userheight=768"  ><?php if ($userResolution == '5464x768'  ) { echo '<strong>'; $strongClose = '</strong>'; } ?>5464x768<?php   echo $strongClose; $strongClose = ""; ?></a> (1366x768x4)<br>
-		<a href="?userwidth=5120&amp;userheight=1024" ><?php if ($userResolution == '5120x1024' ) { echo '<strong>'; $strongClose = '</strong>'; } ?>5120x1024<?php  echo $strongClose; $strongClose = ""; ?></a> (1280x1024x4)<br>
-		<a href="?userwidth=5120&amp;userheight=800"  ><?php if ($userResolution == '5120x800'  ) { echo '<strong>'; $strongClose = '</strong>'; } ?>5120x800<?php   echo $strongClose; $strongClose = ""; ?></a> (1280x800x4)<br>
-		<a href="?userwidth=4096&amp;userheight=768"  ><?php if ($userResolution == '4096x768'  ) { echo '<strong>'; $strongClose = '</strong>'; } ?>4096x768<?php   echo $strongClose; $strongClose = ""; ?></a> (1024x768x4)<br>
-		<strong style="display:block;margin:10px 0 5px 0;">Or enter a <?php if (isset($_COOKIE['DisableImageResizing'])) { ?>minimum <?php } ?>resolution: <span style="font-weight:normal;">(max: 15360x2160)</span></strong>
+		<?php
+		}
+
+		$resolutions = array(
+			(object) [
+				'width' => 3840,
+				'height' => 2160
+			],
+			(object) [
+				'width' => 2880,
+				'height' => 1800
+			],
+			(object) [
+				'width' => 2560,
+				'height' => 1440
+			],
+			(object) [
+				'width' => 1920,
+				'height' => 1200
+			],
+			(object) [
+				'width' => 1920,
+				'height' => 1080
+			],
+			(object) [
+				'width' => 1680,
+				'height' => 1050
+			],
+			(object) [
+				'width' => 1600,
+				'height' => 1200
+			],
+			(object) [
+				'width' => 1600,
+				'height' => 900
+			],
+			(object) [
+				'width' => 1440,
+				'height' => 900
+			],
+			(object) [
+				'width' => 1366,
+				'height' => 768
+			],
+			(object) [
+				'width' => 1280,
+				'height' => 1024
+			],
+			(object) [
+				'width' => 1280,
+				'height' => 800
+			],
+			(object) [
+				'width' => 1024,
+				'height' => 768
+			]
+		);
+		$resolutionsHtml = "";
+		foreach ($resolutions as $resolution) {
+			$fullWidth = $resolution->width * $multiplier;
+			$resolutionsHtml .= "<a href=\"?userwidth=".$fullWidth."&amp;userheight=".$resolution->height."\">";
+			$isResolutionSelected = false;
+			if ($userResolution == $fullWidth."x".$resolution->height) {
+				$isResolutionSelected = true;
+			}
+			if ($isResolutionSelected) {
+				$resolutionsHtml .= "<strong>";
+			}
+			$resolutionsHtml .= $fullWidth."x".$resolution->height;
+			if ($isResolutionSelected) {
+				$resolutionsHtml .= "</strong>";
+			}
+			$resolutionsHtml .= "</a> (".$resolution->width."x".$resolution->height."x".$multiplier.")<br>";
+		}
+		?>
+		<strong style="display:block;margin:10px 0 5px 0;">Or enter a <?php if (isset($_COOKIE['DisableImageResizing'])) { ?>minimum <?php } ?>resolution: <span style="font-weight:normal;">(max: <?php echo $resolutions[0]->width; ?>x<?php echo $resolutions[0]->height; ?>)</span></strong>
 		<form method="get" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" id="ResolutionForm">
 			<input type="text" name="userwidth" class="resolutionFormTextInput">x
 			<input type="text" name="userheight" class="resolutionFormTextInput">
