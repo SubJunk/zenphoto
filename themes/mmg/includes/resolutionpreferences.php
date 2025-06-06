@@ -90,6 +90,7 @@
 			}
 			$resolutionsHtml .= "</a> (".$resolution->width."x".$resolution->height."x".$multiplier.")<br>";
 		}
+		echo $resolutionsHtml;
 		?>
 		<strong style="display:block;margin:10px 0 5px 0;">Or enter a <?php if (isset($_COOKIE['DisableImageResizing'])) { ?>minimum <?php } ?>resolution: <span style="font-weight:normal;">(max: <?php echo $resolutions[0]->width; ?>x<?php echo $resolutions[0]->height; ?>)</span></strong>
 		<form method="get" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" id="ResolutionForm">
