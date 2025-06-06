@@ -31,7 +31,6 @@ function getFooter($profilePage=false, $contactSubject='') {
 			<div class="links">
 				<div>
 					<h2>Links</h2>
-					<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3HMB8YGFHEEVN" title="Donate to qmb">Donate to qmb</a><br>
 					<a href="http://www.dualmonitorbackgrounds.com" title="Dual Monitor Backgrounds">Dual Monitor Backgrounds</a><br>
 					<a href="http://www.triplemonitorbackgrounds.com" title="Triple Monitor Backgrounds">Triple Monitor Backgrounds</a><br>
 					<a href="http://www.zenphoto.org" title="A simpler web album">zenphoto</a>
