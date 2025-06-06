@@ -212,7 +212,7 @@ include('includes/footer.php');
 				<div id="albumsUsers">
 					<?php
 						if (empty($sortByUsers) || $sortByUsers == "date") {
-							echo '<h2>Latest Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Latest Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,
@@ -231,7 +231,7 @@ include('includes/footer.php');
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "popularity") {
-							echo '<h2>Most Popular Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Most Popular Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,
@@ -250,7 +250,7 @@ include('includes/footer.php');
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "rating") {
-							echo '<h2>Top Rated Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Top Rated Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,
