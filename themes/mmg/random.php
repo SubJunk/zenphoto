@@ -77,7 +77,7 @@ include('includes/footer.php');
 
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					echo '<div id="albumsSearch" class="thumbnails topRow">';
-					printRandomImagePages($thumbnailsPerPage, '', true, false, false, 40, '', 608, 109, true, false, false, 0);
+					printImageStatistic($thumbnailsPerPage, "random", '', true, false, false, 40, false, 608, 109, true);
 					echo '</div>';
 				?>
 				<span class="AfterImagesBreak"></span>
