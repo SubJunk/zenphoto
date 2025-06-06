@@ -65,7 +65,7 @@ include('includes/footer.php');
 						On Windows:
 						<ol>
 							<li>
-								<a href="http://www.realtimesoft.com/ultramon/" title="UltraMon">UltraMon</a> and <a href="http://www.displayfusion.com" title="DisplayFusion">DisplayFusion</a> are programs that add a taskbar to more than one monitor.<br>
+								<a href="https://www.realtimesoft.com/ultramon/" title="UltraMon">UltraMon</a> and <a href="https://www.displayfusion.com" title="DisplayFusion">DisplayFusion</a> are programs that add a taskbar to more than one monitor.<br>
 								They both have 30-day trials.
 							</li>
 						</ol>

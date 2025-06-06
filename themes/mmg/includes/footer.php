@@ -31,9 +31,10 @@ function getFooter($profilePage=false, $contactSubject='') {
 			<div class="links">
 				<div>
 					<h2>Links</h2>
-					<a href="http://www.dualmonitorbackgrounds.com" title="Dual Monitor Backgrounds">Dual Monitor Backgrounds</a><br>
-					<a href="http://www.triplemonitorbackgrounds.com" title="Triple Monitor Backgrounds">Triple Monitor Backgrounds</a><br>
-					<a href="http://www.zenphoto.org" title="A simpler web album">zenphoto</a>
+					<a href="https://www.dualmonitorbackgrounds.com" title="Dual Monitor Backgrounds">Dual Monitor Backgrounds</a><br>
+					<a href="https://www.triplemonitorbackgrounds.com" title="Triple Monitor Backgrounds">Triple Monitor Backgrounds</a><br>
+					<a href="https://www.quadmonitorbackgrounds.com" title="Quad Monitor Backgrounds">Quad Monitor Backgrounds</a><br>
+					<a href="https://www.zenphoto.org" title="A simpler web album">zenphoto</a>
 				</div>
 			</div>
 			<br style="clear:left;">
