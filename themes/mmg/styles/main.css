@@ -681,6 +681,7 @@ background-color: white;
 
 .registerOrLoginLinks {
 	float: right;
+	margin-right: 10px;
 }
 
 /* Archive View
