@@ -92,7 +92,7 @@
 		}
 		echo $resolutionsHtml;
 		?>
-		<strong style="display:block;margin:10px 0 5px 0;">Or enter a <?php if (isset($_COOKIE['DisableImageResizing'])) { ?>minimum <?php } ?>resolution: <span style="font-weight:normal;">(max: <?php echo $resolutions[0]->width; ?>x<?php echo $resolutions[0]->height; ?>)</span></strong>
+		<strong style="display:block;margin:10px 0 5px 0;">Or enter a <?php if (isset($_COOKIE['DisableImageResizing'])) { ?>minimum <?php } ?>resolution: <span style="font-weight:normal;">(max: <?php echo $resolutions[0]->width * $multiplier; ?>x<?php echo $resolutions[0]->height; ?>)</span></strong>
 		<form method="get" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" id="ResolutionForm">
 			<input type="text" name="userwidth" class="resolutionFormTextInput">x
 			<input type="text" name="userheight" class="resolutionFormTextInput">
