@@ -10,6 +10,7 @@ $height = getFullHeight();
 $fullWidth = getFullWidth();
 $downloadOptions = '<div id="DownloadOptions">Separate images:<br>';
 
+$relatedItemsCount = 6;
 if (str_contains($_SERVER['SERVER_NAME'], 'dual')) {
 	$halfWidth = $fullWidth / 2;
 
@@ -38,6 +39,7 @@ if (str_contains($_SERVER['SERVER_NAME'], 'dual')) {
 		<a href="'.getCustomImageURL(false, $thirdUserWidth, $userHeight, $thirdWidth, $height, $thirdWidth, '0').'">Middle</a> | 
 		<a href="'.getCustomImageURL(false, $thirdUserWidth, $userHeight, $thirdWidth, $height, $thirdWidth2, '0').'">Right</a>
 	';
+	$relatedItemsCount = 4;
 } else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
 	$quarterWidth = $fullWidth / 4;
 	$quarterWidth2 = $quarterWidth * 2;
@@ -55,6 +57,7 @@ if (str_contains($_SERVER['SERVER_NAME'], 'dual')) {
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, $quarterWidth2, '0').'">Mid-right</a> | 
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, $quarterWidth3, '0').'">Right</a>
 	';
+	$relatedItemsCount = 3;
 }
 $downloadOptions .= '</div>';
 
@@ -146,11 +149,13 @@ if (!empty($userAdClient)) {
 					?>
 				</div>
 			</div>
-			<?php
-			if (function_exists('printRelatedItems')) {
-				printRelatedItems(3, "images", null, null, true);
-			}
-			?>
+			<div class="subPadbox thumbnails">
+				<?php
+				if (function_exists('printRelatedItems')) {
+					printRelatedItems($relatedItemsCount, "images", null, null, true);
+				}
+				?>
+			</div>
 			<div class="halfWidth">
 				<div class="subPadbox imageInfo">
 					<h2>Details</h2>
