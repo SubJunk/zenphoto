@@ -130,14 +130,15 @@ h2 {
 }
 
 #padbox h2,
-.subPadbox h2 {
-	color:			#414D4C;
-	font-weight:		600;
-	font-size:		18pt;
-	letter-spacing:		-1px;
-	text-transform:		none;
-	margin-bottom:		20px;
-	padding:		6px 0;
+.subPadbox h2,
+.subPadbox.thumbnails h3 {
+	color: #414D4C;
+	font-weight: 600;
+	font-size: 18pt;
+	letter-spacing: -1px;
+	text-transform: none;
+	margin-bottom: 20px;
+	padding: 6px 0;
 }
 
 h2 a:link, h2 a:active, h2 a:visited { text-decoration: none; color: #9C3;}
