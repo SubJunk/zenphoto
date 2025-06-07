@@ -16,20 +16,7 @@ include('includes/footer.php');
 	<body id="BrokenLinkPage">
 		<?php zp_apply_filter('theme_body_open'); ?>
 		<div id="main">
-			<div id="gallerytitle">
-				<a href="/" id="Logo"></a>
-				<div class="registerOrLoginLinks">
-					<?php
-					callUserFunction('registerUser::printLink', gettext('Register'), '', ' | ');
-					callUserFunction('printUserLogin_out', '', ' ', NULL, ' ');
-					?>
-				</div>
-				<?php
-				if (getOption('Allow_search')) {
-					printSearchForm('', 'search', '', ' ');
-				}
-				?>
-			</div>
+			<?php include('includes/header.php'); ?>
 			<div id="AboveContentText">
 				<?php include('includes/resolutionpreferences.php'); ?>
 				<h4>Error: <strong>Page not found</strong></h4>

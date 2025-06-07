@@ -611,12 +611,11 @@ label {
 /* Logo */
 
 #Logo {
-	display:		block;
-	width:			132px;
-	height:			50px;
-	margin-right:		70px;
-	background-image:	url(../images/logo.png);
-	float:			left;
+	display: block;
+	width: 132px;
+	height: 50px;
+	margin-right: 70px;
+	float: left;
 }
 
 /* Search Box
