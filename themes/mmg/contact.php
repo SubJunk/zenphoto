@@ -20,14 +20,9 @@ if (function_exists('printContactForm')) {
 				<div id="gallerytitle">
 					<a href="/" id="Logo"></a>
 					<?php if (getOption('Allow_search')) {  printSearchForm('', 'search', '', ' '); }
-					if (!zp_loggedin() && function_exists('printRegistrationForm')) {
-						?>
-
-						<?php
+					if (function_exists('printUserLogin_out')) {
+						callUserFunction('printUserLogin_out', '', '', NULL, ' ');
 					}
-				if (function_exists('printUserLogin_out')) {
-					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
-				}
 					?>
 				</div>
 				<div id="AboveContentText">

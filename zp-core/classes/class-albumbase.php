@@ -276,18 +276,12 @@ class AlbumBase extends MediaObject {
 	function setLocation($place) {
 		$this->set('location', tagURLs($place));
 	}
-	
+
 	function getAdClient() {
 		return get_language_string($this->get('adclient'));
 	}
 
 	function setAdClient($adclient) { $this->set('adclient', $adclient); }
-
-	function getAdSlot() {
-		return get_language_string($this->get('adslot'));
-	}
-
-	function setAdSlot($adslot) { $this->set('adslot', $adslot); }
 
 	/**
 	 * Returns either the subalbum sort direction or the image sort direction of the album

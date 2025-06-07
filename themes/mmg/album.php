@@ -8,54 +8,10 @@ $isOfficialCategory = false;
 include('includes/cookiehandler.php');
 include('includes/footer.php');
 
-$adBoxTopLeft = '';
-$adBoxBottom = '';
-global $_zp_authority;
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$adBoxTopLeft = '
-		<div id="AdBoxTopLeft">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:728px;height:90px"
-			     data-ad-client="ca-pub-3418498412982536"
-			     data-ad-slot="6948285745"></ins>
-			<script>
-			     (adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-	';
-
-	$albumAdSlot = getAdSlot();
-	$albumAdClient = getAdClient();
-	if (!empty($albumAdSlot) && !empty($albumAdClient)) {
-		$adBoxBottom = '
-			<div id="AdBoxBottom">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="'.$albumAdClient.'"
-				     data-ad-slot="'.$albumAdSlot.'"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		';
-	} else {
-		$adBoxBottom = '
-			<div id="AdBoxBottom">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- qmb category bottom -->
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="ca-pub-3418498412982536"
-				     data-ad-slot="8640142704"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		';
-	}
+$adClient = "ca-pub-3418498412982536";
+$userAdClient = getAdClient();
+if (!empty($userAdClient)) {
+	$adClient = $userAdClient;
 }
 ?>
 <!DOCTYPE html>
@@ -65,6 +21,12 @@ if (empty($cookies)) {
 		<title><?php printAlbumTitle(); ?> | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Album', getAlbumTitle()); ?>
+		<?php
+		global $_zp_authority;
+		$cookies = $_zp_authority->getAuthCookies();
+		if (empty($cookies)) { ?>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?php echo $adClient; ?>" crossorigin="anonymous"></script>
+		<?php } ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -123,7 +85,6 @@ if (empty($cookies)) {
 				if ($count == 1) {
 					?>
 					<div id="padbox">
-						<?php echo $adBoxTopLeft; ?>
 						<div id="images">
 							<div class="thumbnails topRow">
 								<ul>
@@ -145,8 +106,7 @@ if (empty($cookies)) {
 							</div><div style="clear:left;"></div>
 						</div>' .
 						printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
-						printTags("links", gettext("<strong>Tags:</strong>") . " ", "taglist", "").
-						$adBoxBottom.'
+						printTags("links", gettext("<strong>Tags:</strong>") . " ", "taglist", "").'
 					</div>
 				';
 			}

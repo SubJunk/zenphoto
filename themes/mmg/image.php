@@ -28,52 +28,10 @@ $downloadOptions = '
 	</div>
 ';
 
-$adBoxTop = '';
-$adBoxBottom = '';
-global $_zp_authority;
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$albumAdSlot = getAdSlot();
-	$albumAdClient = getAdClient();
-	$adBoxTop = '
-		<div id="AdBoxTopLeft">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:728px;height:90px"
-			     data-ad-client="ca-pub-3418498412982536"
-			     data-ad-slot="2551180628"></ins>
-			<script>
-			     (adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-	';
-	if (!empty($albumAdSlot) && !empty($albumAdClient)) {
-		$adBoxBottom = '
-			<div id="AdBoxBottom">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="'.$albumAdClient.'"
-				     data-ad-slot="'.$albumAdSlot.'"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		';
-	} else {
-		$adBoxBottom = '
-			<div id="AdBoxBottom">
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="ca-pub-3418498412982536"
-				     data-ad-slot="1797404444"></ins>
-				<script>
-				     (adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		';
-	}
+$adClient = "ca-pub-3418498412982536";
+$userAdClient = getAdClient();
+if (!empty($userAdClient)) {
+	$adClient = $userAdClient;
 }
 ?>
 <!DOCTYPE html>
@@ -83,6 +41,13 @@ if (empty($cookies)) {
 		<title><?php printBareImageTitle(); ?> | <?php printBareAlbumTitle(); ?> | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
+		<?php
+			global $_zp_authority;
+			$cookies = $_zp_authority->getAuthCookies();
+			if (!getNSFW() && empty($cookies)) { ?>
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?php echo $adClient; ?>" crossorigin="anonymous"></script>
+			<?php }
+		?>
 	</head>
 	<body id="ImagePage">
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -120,10 +85,6 @@ if (empty($cookies)) {
 			<div id="padbox">
 				<div id="SingleImageContainer">
 					<?php
-					if (!getNSFW()) {
-						echo $adBoxTop;
-					}
-
 					$bareImageTitle = html_encode(getBareImageTitle());
 					$originalImageWidth = getFullWidth();
 					$originalImageHeight = getFullHeight();
@@ -154,10 +115,6 @@ if (empty($cookies)) {
 							}
 						}
 						echo $downloadOptions;
-					}
-
-					if (!getNSFW()) {
-						echo $adBoxBottom;
 					}
 					?>
 				</div>

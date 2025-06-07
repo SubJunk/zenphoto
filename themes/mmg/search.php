@@ -5,42 +5,6 @@ if (!defined('WEBPATH'))
 
 include('includes/cookiehandler.php');
 include('includes/footer.php');
-
-$adBoxTop = '';
-$adBoxBottom = '';
-global $_zp_authority;
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$adBoxTop = '
-		<div id="AdBoxTopLeft">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "7244438630";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			</script>
-			<!-- qmb search top (2) -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-
-	$adBoxBottom = '
-		<div id="AdBoxBottom">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "1197905038";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			</script>
-			<!-- qmb search bottom (2) -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,6 +13,12 @@ if (empty($cookies)) {
 		<title>Search | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
+		<?php
+		global $_zp_authority;
+		$cookies = $_zp_authority->getAuthCookies();
+		if (empty($cookies)) { ?>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
+		<?php } ?>
 	</head>
 	<body id="SearchPage">
 		<?php
@@ -74,7 +44,6 @@ if (empty($cookies)) {
 				<span class="subHeading">Results</span>
 			</div>
 			<div id="padbox">
-				<?php echo $adBoxTop; ?>
 				<h2>Images</h2>
 				<div id="albumsSearch" class="thumbnails">
 					<ul>
@@ -98,7 +67,6 @@ if (empty($cookies)) {
 				} else {
 					printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
 				}
-				echo $adBoxBottom;
 				?>
 				<span class="AfterImagesBreak"></span>
 			</div>

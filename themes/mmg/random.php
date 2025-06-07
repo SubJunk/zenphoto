@@ -2,42 +2,6 @@
 // force UTF-8 Ø
 if (!defined('WEBPATH')) die();
 
-$adBoxTopLeft = '';
-$adBoxBottom = '';
-global $_zp_authority;
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$adBoxTopLeft = '
-		<div id="AdBoxTopLeft">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "6948285745";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			</script>
-			<!-- qmb category top -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-
-	$adBoxBottom = '
-		<div id="AdBoxBottom">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "8640142704";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			</script>
-			<!-- qmb category bottom -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-}
-
 include('includes/cookiehandler.php');
 include('includes/footer.php');
 ?>
@@ -48,6 +12,12 @@ include('includes/footer.php');
 		<title>Random Images | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
+		<?php
+		global $_zp_authority;
+		$cookies = $_zp_authority->getAuthCookies();
+		if (empty($cookies)) { ?>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
+		<?php } ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -73,15 +43,12 @@ include('includes/footer.php');
 				<?php
 					$thumbnailsPerPage = 30;
 
-					echo $adBoxTopLeft;
-
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					echo '<div id="albumsSearch" class="thumbnails topRow">';
 					printImageStatistic($thumbnailsPerPage, "random", '', true, false, false, 40, false, 608, 109, true);
 					echo '</div>';
 				?>
 				<span class="AfterImagesBreak"></span>
-				<?php echo $adBoxBottom; ?>
 			</div>
 		</div>
 		<?php

@@ -1537,14 +1537,6 @@ function printAdminHeader($tab, $subtab = NULL) {
 						</tr>
 						<tr>
 							<td align="left" valign="top">
-								<?php echo gettext("Ad Slot:"); ?>
-							</td>
-							<td>
-								<?php print_language_string_list($album->getAdSlot(), $prefix."adslot"); ?>
-							</td>
-						</tr>
-						<tr>
-							<td align="left" valign="top">
 								<?php echo gettext("Guide:"); ?>
 							</td>
 							<td>
@@ -2340,7 +2332,6 @@ function printAdminHeader($tab, $subtab = NULL) {
 		$album->setDateTime(sanitize($_POST[$prefix . "albumdate"]));
 		$album->setLocation(process_language_string_save($prefix . 'albumlocation', 3));
 		$album->setAdClient(process_language_string_save($prefix.'adclient', 3));
-		$album->setAdSlot(process_language_string_save($prefix.'adslot', 3));
 		if (isset($_POST[$prefix . 'thumb'])) {
 			$album->setThumb(sanitize($_POST[$prefix . 'thumb']));
 		}

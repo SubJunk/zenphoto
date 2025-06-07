@@ -65,10 +65,6 @@ class ThemeObject extends PersistentObject {
 		$this->set('parentid', $v);
 	}
 
-	function getAdSlot() {
-		return get_language_string($this->get('adslot'));
-	}
-
 	function getAdClient() {
 		return get_language_string($this->get('adclient'));
 	}

@@ -1252,12 +1252,6 @@ function getAlbumTitle() {
 	return $_zp_current_album->getTitle();
 }
 
-function getAdSlot() {
-	if(!in_context(ZP_ALBUM)) return false;
-	global $_zp_current_album;
-	return $_zp_current_album->getAdSlot();
-}
-
 function getAdClient() {
 	if(!in_context(ZP_ALBUM)) return false;
 	global $_zp_current_album;

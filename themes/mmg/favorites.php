@@ -7,43 +7,6 @@ $isOfficialCategory = false;
 
 include('includes/cookiehandler.php');
 include('includes/footer.php');
-
-
-$adBoxTopLeft = '';
-$adBoxBottom = '';
-global $_zp_authority;
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$adBoxTopLeft = '
-		<div id="AdBoxTopLeft">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "9005579036";
-			google_ad_width = 300;
-			google_ad_height = 600;
-			</script>
-			<!-- qmb category right -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-
-	$adBoxBottom = '
-		<div id="AdBoxBottom">
-			<script type="text/javascript">
-			google_ad_client = "ca-pub-3418498412982536";
-			google_ad_slot = "8640142704";
-			google_ad_width = 728;
-			google_ad_height = 90;
-			</script>
-			<!-- qmb category bottom -->
-			<script type="text/javascript"
-			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-			</script>
-		</div>
-	';
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,6 +15,12 @@ if (empty($cookies)) {
 		<title>Favorites | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
+		<?php
+		global $_zp_authority;
+		$cookies = $_zp_authority->getAuthCookies();
+		if (empty($cookies)) { ?>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
+		<?php } ?>
 	</head>
 	<body id="FavoritesPage">
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -112,7 +81,6 @@ if (empty($cookies)) {
 			}
 			?>
 			<div class="subPadbox">
-				<?php echo $adBoxTopLeft; ?>
 				<div id="albumsSearch">
 					<div class="thumbnails">
 						<ul>
@@ -135,7 +103,6 @@ if (empty($cookies)) {
 				<?php @call_user_func('printSlideShowLink'); ?>
 				<?php printPageListWithNav("« " . gettext("prev"), gettext("next") . " »"); ?>
 				<span class="AfterImagesBreak"></span>
-				<?php echo $adBoxBottom; ?>
 			</div>
 			<br style="clear:left;">
 		</div>

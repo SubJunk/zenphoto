@@ -32,37 +32,6 @@ if (!empty($sortByUsers)) {
 	}
 }
 
-global $_zp_authority;
-$adBoxTopLeft = "";
-$adBoxBottom = "";
-$cookies = $_zp_authority->getAuthCookies();
-if (empty($cookies)) {
-	$adBoxTopLeft = '
-		<div id="AdBoxTopLeft">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:728px;height:90px"
-			     data-ad-client="ca-pub-3418498412982536"
-			     data-ad-slot="3222853765"></ins>
-			<script>
-			     (adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-	';
-	$adBoxBottom = '
-		<div id="AdBoxBottom">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-			     style="display:inline-block;width:728px;height:90px"
-			     data-ad-client="ca-pub-3418498412982536"
-			     data-ad-slot="1336732503"></ins>
-			<script>
-			     (adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-	';
-}
-
 include('includes/cookiehandler.php');
 include('includes/footer.php');
 ?>
@@ -73,6 +42,12 @@ include('includes/footer.php');
 		<title><?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
+		<?php
+		global $_zp_authority;
+		$cookies = $_zp_authority->getAuthCookies();
+		if (empty($cookies)) { ?>
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
+		<?php } ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -130,8 +105,6 @@ include('includes/footer.php');
 						}
 					}
 					$offset = $latestPageMultiplier * $thumbnailsPerPage;
-
-					echo $adBoxTopLeft;
 
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					if (empty($sortBy) || $sortBy == "date") {
@@ -287,7 +260,7 @@ include('includes/footer.php');
 				<span class="AfterImagesBreak"></span>
 			</div>
 			<?php $imageAppend = "_".$thumbnailWidth."_cw".$thumbnailWidth."_ch".$thumbnailHeight."_thumb.jpg"; ?>
-			<div class="subPadbox<?php if (empty($adBoxBottom)) { echo ' noAd'; } ?>">
+			<div class="subPadbox noAd">
 				<div id="OfficialCategories">
 					<h2>Categories</h2>
 					<div class="thumbnails">
@@ -356,7 +329,6 @@ include('includes/footer.php');
 					</div>
 				</div>
 				<span class="AfterImagesBreak"></span>
-				<?php echo $adBoxBottom; ?>
 			</div>
 		</div>
 		<?php
