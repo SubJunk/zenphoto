@@ -19,6 +19,11 @@ if (function_exists('printRegistrationForm')) {
 			<div id="main">
 				<div id="gallerytitle">
 					<a href="/" id="Logo"></a>
+				<div class="registerOrLoginLinks">
+					<?php
+					callUserFunction('printUserLogin_out', '', ' ', NULL, ' ');
+					?>
+				</div>
 					<?php if (getOption('Allow_search')) {
 						printSearchForm('', 'search', '', ' ');
 					} ?>

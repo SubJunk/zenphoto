@@ -18,17 +18,19 @@ include('includes/footer.php');
 		<div id="main">
 			<div id="gallerytitle">
 				<a href="/" id="Logo"></a>
+				<div class="registerOrLoginLinks">
+					<?php
+					callUserFunction('registerUser::printLink', gettext('Register'), '', ' | ');
+					callUserFunction('printUserLogin_out', '', ' ', NULL, ' ');
+					?>
+				</div>
 				<?php
 				if (getOption('Allow_search')) {
 					printSearchForm('', 'search', '', ' ');
 				}
-				if (function_exists('printUserLogin_out')) {
-					callUserFunction('printUserLogin_out', '', '', NULL, ' ');
-				}
 				?>
 			</div>
 			<div id="AboveContentText">
-				<?php if (!zp_loggedin()) { ?><a href="/page/register/" id="RegisterLink"></a><?php } ?>
 				<?php include('includes/resolutionpreferences.php'); ?>
 				<h4>Error: <strong>Page not found</strong></h4>
 				Broken link

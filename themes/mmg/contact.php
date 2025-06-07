@@ -19,14 +19,15 @@ if (function_exists('printContactForm')) {
 			<div id="main">
 				<div id="gallerytitle">
 					<a href="/" id="Logo"></a>
-					<?php if (getOption('Allow_search')) {  printSearchForm('', 'search', '', ' '); }
-					if (function_exists('printUserLogin_out')) {
-						callUserFunction('printUserLogin_out', '', '', NULL, ' ');
-					}
-					?>
+					<div class="registerOrLoginLinks">
+						<?php
+						callUserFunction('registerUser::printLink', gettext('Register'), '', ' | ');
+						callUserFunction('printUserLogin_out', '', ' ', NULL, ' ');
+						?>
+					</div>
+					<?php if (getOption('Allow_search')) {  printSearchForm('', 'search', '', ' '); } ?>
 				</div>
 				<div id="AboveContentText">
-					<?php if (!zp_loggedin()) { ?><a href="/page/register/" id="RegisterLink"></a><?php } ?>
 					<?php include('includes/resolutionpreferences.php'); ?>
 					<h4><?php echo gettext('Contact us.') ?></h4>
 					<span class="subHeading">We will usually reply within one day</span>
