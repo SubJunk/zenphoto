@@ -155,6 +155,7 @@ if (!empty($userAdClient)) {
 					printRelatedItems($relatedItemsCount, "images", null, null, true);
 				}
 				?>
+				<br style="clear:left;">
 			</div>
 			<div class="halfWidth">
 				<div class="subPadbox imageInfo">
