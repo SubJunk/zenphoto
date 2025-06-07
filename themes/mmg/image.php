@@ -6,27 +6,57 @@ if (!defined('WEBPATH')) die();
 include('includes/cookiehandler.php');
 include('includes/footer.php');
 
-$fullWidth = getFullWidth();
-$quarterWidth = $fullWidth / 4;
-$quarterWidth2 = $quarterWidth * 2;
-$quarterWidth3 = $quarterWidth * 3;
 $height = getFullHeight();
+$fullWidth = getFullWidth();
+$downloadOptions = '<div id="DownloadOptions">Separate images:<br>';
 
-if (!empty($userWidth) && !empty($userHeight)) {
-	$quarterUserWidth = $userWidth / 4;
-} else {
-	$quarterUserWidth = $quarterWidth;
-}
+if (str_contains($_SERVER['SERVER_NAME'], 'dual')) {
+	$halfWidth = $fullWidth / 2;
 
-$downloadOptions = '
-	<div id="DownloadOptions">
-		Separate images:<br>
+	if (!empty($userWidth) && !empty($userHeight) && is_numeric($userWidth) && is_numeric($userHeight)) {
+		$halfUserWidth = $userWidth / 2;
+	} else {
+		$halfUserWidth = $halfWidth;
+	}
+
+	$downloadOptions .= '
+		<a href="'.getCustomImageURL(null, $halfUserWidth, $userHeight, $halfWidth, $height, '0', '0').'">Left</a> | 
+		<a href="'.getCustomImageURL(null, $halfUserWidth, $userHeight, $halfWidth, $height, $halfWidth, '0').'">Right</a>
+	';
+} else if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+	$thirdWidth = $fullWidth / 3;
+	$thirdWidth2 = $thirdWidth * 2;
+
+	if (!empty($userWidth) && !empty($userHeight) && is_numeric($userWidth) && is_numeric($userHeight)) {
+		$thirdUserWidth = $userWidth / 3;
+	} else {
+		$thirdUserWidth = $thirdWidth;
+	}
+
+	$downloadOptions .= '
+		<a href="'.getCustomImageURL(false, $thirdUserWidth, $userHeight, $thirdWidth, $height, '0', '0').'">Left</a> | 
+		<a href="'.getCustomImageURL(false, $thirdUserWidth, $userHeight, $thirdWidth, $height, $thirdWidth, '0').'">Middle</a> | 
+		<a href="'.getCustomImageURL(false, $thirdUserWidth, $userHeight, $thirdWidth, $height, $thirdWidth2, '0').'">Right</a>
+	';
+} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+	$quarterWidth = $fullWidth / 4;
+	$quarterWidth2 = $quarterWidth * 2;
+	$quarterWidth3 = $quarterWidth * 3;
+
+	if (!empty($userWidth) && !empty($userHeight) && is_numeric($userWidth) && is_numeric($userHeight)) {
+		$quarterUserWidth = $userWidth / 4;
+	} else {
+		$quarterUserWidth = $quarterWidth;
+	}
+
+	$downloadOptions .= '
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, '0', '0').'">Left</a> | 
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, $quarterWidth, '0').'">Mid-left</a> | 
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, $quarterWidth2, '0').'">Mid-right</a> | 
 		<a href="'.getCustomImageURL(false, $quarterUserWidth, $userHeight, $quarterWidth, $height, $quarterWidth3, '0').'">Right</a>
-	</div>
-';
+	';
+}
+$downloadOptions .= '</div>';
 
 $adClient = "ca-pub-3418498412982536";
 $userAdClient = getAdClient();
