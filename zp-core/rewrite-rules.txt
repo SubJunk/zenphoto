@@ -6,12 +6,10 @@
 	Define %TAGS%						=>	_TAGS_
 	Define %GALLERY_INDEX%		=>  _GALLERY_INDEX_
 
-	# Start custom code
-	RewriteRule ^users/?$                                        index.php?p=archive [L,QSA]
 	RewriteRule ^users/([0-9]+)?$                                index.php?p=archive&page=$1 [L,QSA]
+	RewriteRule ^users/?$                                        index.php?p=archive [L,QSA]
 	RewriteRule ^favorites/?$                                    index.php?p=favorites [L,QSA]
 	RewriteRule ^random/?$                                       index.php?p=random [L,QSA]
-	# End custom code
 
 	#### Quick links
 	RewriteRule ^$                     										index.php [L,QSA]
@@ -19,9 +17,8 @@
 	RewriteRule ^admin/*$																	%ZENFOLDER%/admin.php [L,QSA]
 
 	#### Rewrite rules for search
-	RewriteRule ^%ARCHIVE%/*$															index.php?p=archive [L,QSA]
-	RewriteRule ^%ARCHIVE%/(.*)/([0-9]+)/?$     					index.php?p=search&date=$1&page=$2 [L,QSA]
 	RewriteRule ^%ARCHIVE%/(.*)/?$     										index.php?p=archive&page=$1 [L,QSA]
+	RewriteRule ^%ARCHIVE%/*$															index.php?p=archive [L,QSA]
 	RewriteRule ^%TAGS%/(.*)/([0-9]+)/?$ 									index.php?p=search&searchfields=tags&s=$1&page=$2 [L,QSA]
 	RewriteRule ^%TAGS%/(.*)/?$ 													index.php?p=search&searchfields=tags&s=$1 [L,QSA]
   RewriteRule ^%SEARCH%/*$															index.php?p=search [L,QSA]
