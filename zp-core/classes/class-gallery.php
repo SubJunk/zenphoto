@@ -1064,11 +1064,13 @@ class Gallery {
 			}
 		}
 		$_zp_db->freeResult($result);
+		if ($archivepage == false) {
 		foreach ($albums as $folder) { // these albums are not in the database
 			$albumobj = AlbumBase::newAlbum($folder);
 			if ($albumobj->exists) { // fail to instantiate?
 				$results[$folder] = $albumobj->getData();
 			}
+		}
 		}
 		//	now put the results in the right order
 		$results = sortByKey($results, $sortkey, $order);
