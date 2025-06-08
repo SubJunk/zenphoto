@@ -8,7 +8,7 @@
 
 	# Start custom code
 	RewriteRule ^users/?$                                        index.php?p=archive [L,QSA]
-	RewriteRule ^users/([0-9]+)?$                                index.php?p=archive&page=$1 [L,QSA]
+	RewriteRule ^users/([0-9]+)/?$                               index.php?p=archive&page=$1 [L,QSA]
 	RewriteRule ^favorites/?$                                    index.php?p=favorites [L,QSA]
 	RewriteRule ^random/?$                                       index.php?p=random [L,QSA]
 	# End custom code
