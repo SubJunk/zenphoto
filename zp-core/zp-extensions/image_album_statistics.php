@@ -53,9 +53,10 @@ function getAlbumStatistic($number = 5, $option = '', $albumfolder = '', $thresh
         $albumWhere = ' WHERE parentid = ' . $obj->getID();
       }
     }
+		$albumWhere = "WHERE `dynamic`=0 AND `show`=1 AND ";
   } else {
     $obj = $_zp_gallery;
-    $albumWhere = '';
+		$albumWhere = "WHERE `dynamic`=0 AND `parentid` IS NULL AND `show`=1 AND ";
   }
   switch (strtolower($sortdirection)) {
     case 'desc':
@@ -66,11 +67,6 @@ function getAlbumStatistic($number = 5, $option = '', $albumfolder = '', $thresh
       $sortdir = 'ASC';
       break;
   }
-	if (empty($albumWhere)) {
-		$albumWhere = ' WHERE ';
-	} else {
-		$albumWhere .= ' AND ';
-	}
 
 	$albumWhere .= 'is_official != 1 AND has_image = 1 ';
 
