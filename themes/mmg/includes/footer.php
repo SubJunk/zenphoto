@@ -12,8 +12,8 @@ function getFooter($profilePage=false, $contactSubject='') {
 			<div class="pages">
 				<div>
 					<h2>Pages</h2>
-					<a href="/page/archive/" title="All Users">User List</a><br>
-					<a href="/page/random/" title="Random Images">Random Images</a><br>
+					<a href="/users/" title="All Users">User List</a><br>
+					<a href="/random/" title="Random Images">Random Images</a><br>
 					<?php
 						if ($profilePage) {
 							printRSSLink('Album', '', gettext('RSS'), '');

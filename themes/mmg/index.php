@@ -100,7 +100,7 @@ include('includes/footer.php');
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					if (empty($sortBy) || $sortBy == "date") {
 						echo '<h2>Latest Images</h2><div id="albums">';
-						echo '<span class="sortBy">Sort by: <a href="?sortby=date" class="selected">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/page/random/">Random</a></span><br style="clear:left;">';
+						echo '<span class="sortBy">Sort by: <a href="?sortby=date" class="selected">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
 						printImageStatistic(
 							$thumbnailsPerPage,
@@ -122,7 +122,7 @@ include('includes/footer.php');
 						);
 					} else if ($sortBy == "popularity") {
 						echo '<h2>Most Popular Images</h2><div id="albums">';
-						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity" class="selected">Popularity</a> <a href="/page/random/">Random</a></span><br style="clear:left;">';
+						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating">Rating</a> <a href="?sortby=popularity" class="selected">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
 						printImageStatistic(
 							$thumbnailsPerPage,
@@ -144,7 +144,7 @@ include('includes/footer.php');
 						);
 					} else if ($sortBy == "rating") {
 						echo '<h2>Top Rated Images</h2><div id="albums">';
-						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating" class="selected">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/page/random/">Random</a></span><br style="clear:left;">';
+						echo '<span class="sortBy">Sort by: <a href="?sortby=date">Date</a> <a href="?sortby=rating" class="selected">Rating</a> <a href="?sortby=popularity">Popularity</a> <a href="/random/">Random</a></span><br style="clear:left;">';
 						echo '<div class="thumbnails topRow">';
 						printImageStatistic(
 							$thumbnailsPerPage,
@@ -189,7 +189,7 @@ include('includes/footer.php');
 				<div id="albumsUsers">
 					<?php
 						if (empty($sortByUsers) || $sortByUsers == "date") {
-							echo '<h2>Latest Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Latest Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,
@@ -208,7 +208,7 @@ include('includes/footer.php');
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "popularity") {
-							echo '<h2>Most Popular Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Most Popular Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,
@@ -227,7 +227,7 @@ include('includes/footer.php');
 							echo '</div>';
 							echo '</div>';
 						} else if ($sortByUsers == "rating") {
-							echo '<h2>Top Rated Users<a href="/page/archive/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
+							echo '<h2>Top Rated Users<a href="/users/" title="Click here to see all users" id="UserListLink">(All Users)</a></h2><div id="albumsusersinner">';
 							echo '<div class="thumbnails">';
 							printAlbumStatistic(
 								15,

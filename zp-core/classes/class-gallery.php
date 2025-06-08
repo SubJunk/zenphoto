@@ -1049,7 +1049,7 @@ class Gallery {
 
 		$result = $_zp_db->query($sql);
 		$results = array();
-		//	check database aganist file system
+		//	check database against file system
 		while ($row = $_zp_db->fetchAssoc($result)) {
 			$folder = $row['folder'];
 			if (($key = array_search($folder, $albums)) !== false) { // album exists in filesystem
