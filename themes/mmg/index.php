@@ -256,66 +256,256 @@ include('includes/footer.php');
 					<h2>Categories</h2>
 					<div class="thumbnails">
 						<ul>
-							<li>
-								<a href="/abstract/" title="Abstract">
-								<img src="/cache/abstract/powerwall<?php echo $imageAppend; ?>" alt="Abstract"></a>
-								<h3><a href="/abstract/" title="Abstract">
-								Abstract</a></h3>
-							</li>
-							<li>
-								<a href="/animals/" title="Animals">
-								<img src="/cache/animals/eatingthornbushes<?php echo $imageAppend; ?>" alt="Animals"></a>
-								<h3><a href="/animals/" title="Animals">
-								Animals</a></h3>
-							</li>
-							<li>
-								<a href="/astronomy/" title="Astronomy">
-								<img src="/cache/astronomy/supernova<?php echo $imageAppend; ?>" alt="Astronomy"></a>
-								<h3><a href="/astronomy/" title="Astronomy">
-								Astronomy</a></h3>
-							</li>
-							<li>
-								<a href="/celebrities/" title="Celebrities">
-								<img src="/cache/celebrities/januaryjones-3<?php echo $imageAppend; ?>" alt="Celebrities"></a>
-								<h3><a href="/celebrities/" title="Celebrities">
-								Celebrities</a></h3>
-							</li>
-							<li>
-								<a href="/crafted-nature/" title="Crafted Nature">
-								<img src="/cache/crafted-nature/wellingtonharbour<?php echo $imageAppend; ?>" alt="Crafted Nature"></a>
-								<h3><a href="/crafted-nature/" title="Crafted Nature">
-								Crafted Nature</a></h3>
-							</li>
-							<li>
-								<a href="/gaming/" title="Gaming">
-								<img src="/cache/gaming/godofwar<?php echo $imageAppend; ?>" alt="Gaming"></a>
-								<h3><a href="/gaming/" title="Gaming">
-								Gaming</a></h3>
-							</li>
-							<li>
-								<a href="/industrial/" title="Industrial">
-								<img src="/cache/industrial/romantheatreinbosra<?php echo $imageAppend; ?>" alt="Industrial"></a>
-								<h3><a href="/industrial/" title="Industrial">
-								Industrial</a></h3>
-							</li>
-							<li>
-								<a href="/nature/" title="Nature">
-								<img src="/cache/nature/mountpilatus<?php echo $imageAppend; ?>" alt="Nature"></a>
-								<h3><a href="/nature/" title="Nature">
-								Nature</a></h3>
-							</li>
-							<li>
-								<a href="/popular-culture/" title="Popular Culture">
-								<img src="/cache/popular-culture/avengers<?php echo $imageAppend; ?>" alt="Popular Culture"></a>
-								<h3><a href="/popular-culture/" title="Popular Culture">
-								Popular Culture</a></h3>
-							</li>
-							<li>
-								<a href="/science-fiction/" title="Science Fiction / Fantasy">
-								<img src="/cache/science-fiction/darkfuturebattle<?php echo $imageAppend; ?>" alt="Science Fiction / Fantasy"></a>
-								<h3><a href="/science-fiction/" title="Science Fiction / Fantasy">
-								Science Fiction / Fantasy</a></h3>
-							</li>
+							<?php if (str_contains($_SERVER['SERVER_NAME'], 'dual')) { ?>
+								<li>
+									<a href="/abstract/" title="Abstract">
+									<img src="/cache/abstract/turnesol<?php echo $imageAppend; ?>" alt="Abstract"></a>
+									<h3><a href="/abstract/" title="Abstract">
+									Abstract</a></h3>
+								</li>
+								<li>
+									<a href="/animals/" title="Animals">
+									<img src="/cache/animals/sleeptight<?php echo $imageAppend; ?>" alt="Animals"></a>
+									<h3><a href="/animals/" title="Animals">
+									Animals</a></h3>
+								</li>
+								<li>
+									<a href="/anime/" title="Anime">
+									<img src="/cache/anime/blacklagoon4<?php echo $imageAppend; ?>" alt="Anime"></a>
+									<h3><a href="/anime/" title="Anime">
+									Anime</a></h3>
+								</li>
+								<li>
+									<a href="/astronomy/" title="Astronomy">
+									<img src="/cache/astronomy/serenity<?php echo $imageAppend; ?>" alt="Astronomy"></a>
+									<h3><a href="/astronomy/" title="Astronomy">
+									Astronomy</a></h3>
+								</li>
+								<li>
+									<a href="/computers/" title="Computers / Technology">
+									<img src="/cache/computers/whitekeyboard<?php echo $imageAppend; ?>" alt="Computers / Technology"></a>
+									<h3><a href="/computers/" title="Computers / Technology">
+									Computers / Technology</a></h3>
+								</li>
+								<li>
+									<a href="/crafted-nature/" title="Crafted Nature">
+									<img src="/cache/crafted-nature/iaspond<?php echo $imageAppend; ?>" alt="Crafted Nature"></a>
+									<h3><a href="/crafted-nature/" title="Crafted Nature">
+									Crafted Nature</a></h3>
+								</li>
+								<li>
+									<a href="/fantasy/" title="Fantasy">
+									<img src="/cache/fantasy/dragonbattle<?php echo $imageAppend; ?>" alt="Fantasy"></a>
+									<h3><a href="/fantasy/" title="Fantasy">
+									Fantasy</a></h3>
+								</li>
+								<li>
+									<a href="/gaming/" title="Gaming">
+									<img src="/cache/gaming/guildwarsnightfall<?php echo $imageAppend; ?>" alt="Gaming"></a>
+									<h3><a href="/gaming/" title="Gaming">
+									Gaming</a></h3>
+								</li>
+								<li>
+									<a href="/industrial/" title="Industrial">
+									<img src="/cache/industrial/eastpyne<?php echo $imageAppend; ?>" alt="Industrial"></a>
+									<h3><a href="/industrial/" title="Industrial">
+									Industrial</a></h3>
+								</li>
+								<li>
+									<a href="/macabre/" title="Macabre / Surreal">
+									<img src="/cache/macabre/bloodtrails<?php echo $imageAppend; ?>" alt="Macabre / Surreal"></a>
+									<h3><a href="/macabre/" title="Macabre / Surreal">
+									Macabre / Surreal</a></h3>
+								</li>
+								<li>
+									<a href="/microscopic/" title="Microscopic">
+									<img src="/cache/microscopic/neuron<?php echo $imageAppend; ?>" alt="Microscopic"></a>
+									<h3><a href="/microscopic/" title="Microscopic">
+									Microscopic</a></h3>
+								</li>
+								<li>
+									<a href="/music/" title="Music">
+									<img src="/cache/music/aperfectcircle<?php echo $imageAppend; ?>" alt="Music"></a>
+									<h3><a href="/music/" title="Music">
+									Music</a></h3>
+								</li>
+								<li>
+									<a href="/nature/" title="Nature">
+									<img src="/cache/nature/dayhasbroken<?php echo $imageAppend; ?>" alt="Nature"></a>
+									<h3><a href="/nature/" title="Nature">
+									Nature</a></h3>
+								</li>
+								<li>
+									<a href="/celebrities/" title="People">
+									<img src="/cache/celebrities/evangelinelilly<?php echo $imageAppend; ?>" alt="People"></a>
+									<h3><a href="/celebrities/" title="People">
+									People</a></h3>
+								</li>
+								<li>
+									<a href="/popular-culture/" title="Popular Culture">
+									<img src="/cache/popular-culture/transformers<?php echo $imageAppend; ?>" alt="Popular Culture"></a>
+									<h3><a href="/popular-culture/" title="Popular Culture">
+									Popular Culture</a></h3>
+								</li>
+								<li>
+									<a href="/science-fiction/" title="Science Fiction">
+									<img src="/cache/science-fiction/goldentimes<?php echo $imageAppend; ?>" alt="Science Fiction"></a>
+									<h3><a href="/science-fiction/" title="Science Fiction">
+									Science Fiction</a></h3>
+								</li>
+								<li>
+									<a href="/sports/" title="Sports">
+									<img src="/cache/sports/bobbyabreu<?php echo $imageAppend; ?>" alt="Sports"></a>
+									<h3><a href="/sports/" title="Sports">
+									Sports</a></h3>
+								</li>
+								<li>
+									<a href="/vehicles/" title="Vehicles">
+									<img src="/cache/vehicles/koenigseggccr<?php echo $imageAppend; ?>" alt="Vehicles"></a>
+									<h3><a href="/vehicles/" title="Vehicles">
+									Vehicles</a></h3>
+								</li>
+							<?php } else if (str_contains($_SERVER['SERVER_NAME'], 'triple')) { ?>
+								<li>
+									<a href="/abstract/" title="Abstract">
+									<img src="/cache/abstract/frostedlights<?php echo $imageAppend; ?>" alt="Abstract"></a>
+									<h3><a href="/abstract/" title="Abstract">
+									Abstract</a></h3>
+								</li>
+								<li>
+									<a href="/animals/" title="Animals">
+									<img src="/cache/animals/sleeptight<?php echo $imageAppend; ?>" alt="Animals"></a>
+									<h3><a href="/animals/" title="Animals">
+									Animals</a></h3>
+								</li>
+								<li>
+									<a href="/astronomy/" title="Astronomy">
+									<img src="/cache/astronomy/supernova<?php echo $imageAppend; ?>" alt="Astronomy"></a>
+									<h3><a href="/astronomy/" title="Astronomy">
+									Astronomy</a></h3>
+								</li>
+								<li>
+									<a href="/computers/" title="Computers / Technology">
+									<img src="/cache/computers/laptop<?php echo $imageAppend; ?>" alt="Computers / Technology"></a>
+									<h3><a href="/computers/" title="Computers / Technology">
+									Computers / Technology</a></h3>
+								</li>
+								<li>
+									<a href="/crafted-nature/" title="Crafted Nature">
+									<img src="/cache/crafted-nature/springdale<?php echo $imageAppend; ?>" alt="Crafted Nature"></a>
+									<h3><a href="/crafted-nature/" title="Crafted Nature">
+									Crafted Nature</a></h3>
+								</li>
+								<li>
+									<a href="/gaming/" title="Gaming">
+									<img src="/cache/gaming/masseffect22<?php echo $imageAppend; ?>" alt="Gaming"></a>
+									<h3><a href="/gaming/" title="Gaming">
+									Gaming</a></h3>
+								</li>
+								<li>
+									<a href="/industrial/" title="Industrial">
+									<img src="/cache/industrial/viennaaustria<?php echo $imageAppend; ?>" alt="Industrial"></a>
+									<h3><a href="/industrial/" title="Industrial">
+									Industrial</a></h3>
+								</li>
+								<li>
+									<a href="/macabre/" title="Macabre / Surreal">
+									<img src="/cache/macabre/abandonedmentalhospital<?php echo $imageAppend; ?>" alt="Macabre / Surreal"></a>
+									<h3><a href="/macabre/" title="Macabre / Surreal">
+									Macabre / Surreal</a></h3>
+								</li>
+								<li>
+									<a href="/microscopic/" title="Microscopic">
+									<img src="/cache/microscopic/neuron<?php echo $imageAppend; ?>" alt="Microscopic"></a>
+									<h3><a href="/microscopic/" title="Microscopic">
+									Microscopic</a></h3>
+								</li>
+								<li>
+									<a href="/nature/" title="Nature">
+									<img src="/cache/nature/letitbe<?php echo $imageAppend; ?>" alt="Nature"></a>
+									<h3><a href="/nature/" title="Nature">
+									Nature</a></h3>
+								</li>
+								<li>
+									<a href="/celebrities/" title="People">
+									<img src="/cache/celebrities/jessicaalba<?php echo $imageAppend; ?>" alt="People"></a>
+									<h3><a href="/celebrities/" title="People">
+									People</a></h3>
+								</li>
+								<li>
+									<a href="/popular-culture/" title="Popular Culture">
+									<img src="/cache/popular-culture/tronlegacy2<?php echo $imageAppend; ?>" alt="Popular Culture"></a>
+									<h3><a href="/popular-culture/" title="Popular Culture">
+									Popular Culture</a></h3>
+								</li>
+								<li>
+									<a href="/science-fiction/" title="Science Fiction / Fantasy">
+									<img src="/cache/science-fiction/trexvssamurai<?php echo $imageAppend; ?>" alt="Science Fiction / Fantasy"></a>
+									<h3><a href="/science-fiction/" title="Science Fiction / Fantasy">
+									Science Fiction / Fantasy</a></h3>
+								</li>
+							<?php } else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) { ?>
+								<li>
+									<a href="/abstract/" title="Abstract">
+									<img src="/cache/abstract/powerwall<?php echo $imageAppend; ?>" alt="Abstract"></a>
+									<h3><a href="/abstract/" title="Abstract">
+									Abstract</a></h3>
+								</li>
+								<li>
+									<a href="/animals/" title="Animals">
+									<img src="/cache/animals/eatingthornbushes<?php echo $imageAppend; ?>" alt="Animals"></a>
+									<h3><a href="/animals/" title="Animals">
+									Animals</a></h3>
+								</li>
+								<li>
+									<a href="/astronomy/" title="Astronomy">
+									<img src="/cache/astronomy/supernova<?php echo $imageAppend; ?>" alt="Astronomy"></a>
+									<h3><a href="/astronomy/" title="Astronomy">
+									Astronomy</a></h3>
+								</li>
+								<li>
+									<a href="/celebrities/" title="Celebrities">
+									<img src="/cache/celebrities/januaryjones-3<?php echo $imageAppend; ?>" alt="Celebrities"></a>
+									<h3><a href="/celebrities/" title="Celebrities">
+									Celebrities</a></h3>
+								</li>
+								<li>
+									<a href="/crafted-nature/" title="Crafted Nature">
+									<img src="/cache/crafted-nature/wellingtonharbour<?php echo $imageAppend; ?>" alt="Crafted Nature"></a>
+									<h3><a href="/crafted-nature/" title="Crafted Nature">
+									Crafted Nature</a></h3>
+								</li>
+								<li>
+									<a href="/gaming/" title="Gaming">
+									<img src="/cache/gaming/godofwar<?php echo $imageAppend; ?>" alt="Gaming"></a>
+									<h3><a href="/gaming/" title="Gaming">
+									Gaming</a></h3>
+								</li>
+								<li>
+									<a href="/industrial/" title="Industrial">
+									<img src="/cache/industrial/romantheatreinbosra<?php echo $imageAppend; ?>" alt="Industrial"></a>
+									<h3><a href="/industrial/" title="Industrial">
+									Industrial</a></h3>
+								</li>
+								<li>
+									<a href="/nature/" title="Nature">
+									<img src="/cache/nature/mountpilatus<?php echo $imageAppend; ?>" alt="Nature"></a>
+									<h3><a href="/nature/" title="Nature">
+									Nature</a></h3>
+								</li>
+								<li>
+									<a href="/popular-culture/" title="Popular Culture">
+									<img src="/cache/popular-culture/avengers<?php echo $imageAppend; ?>" alt="Popular Culture"></a>
+									<h3><a href="/popular-culture/" title="Popular Culture">
+									Popular Culture</a></h3>
+								</li>
+								<li>
+									<a href="/science-fiction/" title="Science Fiction / Fantasy">
+									<img src="/cache/science-fiction/darkfuturebattle<?php echo $imageAppend; ?>" alt="Science Fiction / Fantasy"></a>
+									<h3><a href="/science-fiction/" title="Science Fiction / Fantasy">
+									Science Fiction / Fantasy</a></h3>
+								</li>
+							<?php } ?>
 						</ul>
 					</div>
 				</div>
