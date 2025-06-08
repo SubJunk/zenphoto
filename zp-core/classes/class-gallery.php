@@ -1042,7 +1042,7 @@ class Gallery {
 		$sql = 'SELECT * FROM ' . $_zp_db->prefix("albums") . ' WHERE `parentid`' . $albumid;
 
 		if ($archivepage == true) {
-			$sql .= ' AND is_official=0 && has_image=1';
+			$sql .= ' AND `is_official`=0 AND `has_image`=1 AND `show`=1';
 		}
 
 		$sql .= ' ORDER BY ' . $sortkey . ' ' . $sortdirection;
