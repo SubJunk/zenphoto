@@ -3,7 +3,7 @@
 
 if (!defined('WEBPATH'))
 	die();
-if (function_exists('printContactForm')) {
+if (extensionEnabled('contact_form')) {
 	include('includes/cookiehandler.php');
 	include('includes/footer.php');
 	?>

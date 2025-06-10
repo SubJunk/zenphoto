@@ -3,7 +3,7 @@
 
 if (!defined('WEBPATH'))
 	die();
-if (function_exists('printRegistrationForm')) {
+if (method_exists('registerUser', 'printForm')) {
 	include('includes/cookiehandler.php');
 	include('includes/footer.php');
 	?>
@@ -25,7 +25,7 @@ if (function_exists('printRegistrationForm')) {
 				</div>
 				<div class="halfWidth">
 					<div class="subPadbox">
-						<?php printRegistrationForm(); ?>
+						<?php registerUser::printForm(); ?>
 					</div>
 				</div>
 				<div class="halfWidth">
