@@ -6,8 +6,8 @@
 	Define %TAGS%						=>	_TAGS_
 	Define %GALLERY_INDEX%		=>  _GALLERY_INDEX_
 
-	RewriteRule ^users/([0-9]+)/?$												index.php?p=users&page=$1 [L,QSA]
-	RewriteRule ^users/?$																	index.php?p=users [L,QSA]
+	RewriteRule ^users/?$																	index.php?p=archive [L,QSA]
+	RewriteRule ^users/([0-9]+)?$													index.php?p=archive&page=$1 [L,QSA]
 	RewriteRule ^favorites/?$															index.php?p=favorites [L,QSA]
 	RewriteRule ^random/?$																index.php?p=random [L,QSA]
 
