@@ -168,13 +168,13 @@ if (!empty($userAdClient)) {
 					<div><strong><?php if($resizedImage) { echo 'Original '; } ?>Resolution:</strong> <?php echo $originalImageWidth . 'x' . $originalImageHeight; ?></div>
 					<?php
 						$copyrightFromDatabase = $_zp_current_image->getCopyright();
-						$copyrightText = 'Unknown (Do you own this image or know who does? <a href="/page/contact/?subject=Copyright ' . getMainSiteURL() . getImageURL() . '">Please let us know here</a>).';
+						$copyrightText = 'Unknown (Do you own this image or know who does? <a href="/page/contact/?subject=Copyright ' . getParentSiteURL() . getImageURL() . '">Please let us know here</a>).';
 						if (!empty($copyrightFromDatabase)) {
 							$copyrightText = $copyrightFromDatabase;
 						}
 					?>
 					<div><strong>Copyright:</strong> <?php echo $copyrightText; ?></div>
-					<div><strong>Date added:</strong> <?php echo getImageDate("%e %B %Y"); ?></div>
+					<div><strong>Date added:</strong> <?php echo getImageDate("F j, Y"); ?></div>
 					<div><strong>Instructions:</strong> <a href="/page/faq" title="How to make backgrounds span across screens">How to make backgrounds span across screens</a></div>
 				</div>
 				<div class="subPadbox">
