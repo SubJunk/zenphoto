@@ -73,10 +73,10 @@ function getAlbumStatistic($number = 5, $option = '', $albumfolder = '', $thresh
 
   if (($option == 'toprated' || $option == 'mostrated' || $option == 'popular') && $threshold > 0) {
     if (($option == 'toprated' || $option == 'mostrated') && $threshold > 0) {
-      $albumWhere .= 'total_votes >= ' . $threshold;
+      $albumWhere .= ' AND total_votes >= ' . $threshold;
     }
     if ($option == 'popular' && $threshold > 0) {
-      $albumWhere .= 'hitcounter >= ' . $threshold;
+      $albumWhere .= ' AND hitcounter >= ' . $threshold;
     }
   }
 
