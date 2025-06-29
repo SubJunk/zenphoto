@@ -32,12 +32,12 @@ $(function(){
 			let thumbnailAspectRatio = 2.872;
 			let imagesPerRowThreshold = 3;
 			let imagesPerRowMultiplier = 4;
-			if (window.location.href.contains('triple')) {
+			if (window.location.href.includes('triple')) {
 				imagesPerRowWidth = 450;
 				thumbnailAspectRatio = 4.175;
 				imagesPerRowThreshold = 2;
 				imagesPerRowMultiplier = 4;
-			} else if (window.location.href.contains('quad')) {
+			} else if (window.location.href.includes('quad')) {
 				imagesPerRowWidth = 535;
 				thumbnailAspectRatio = 5.578;
 				imagesPerRowThreshold = 2;

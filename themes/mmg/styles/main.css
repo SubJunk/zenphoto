@@ -400,13 +400,6 @@ div.thumbnails li h3 a:hover {
 	text-decoration: underline;
 }
 
-div#albumsusersinner div.thumbnails li img,
-div#OfficialCategories div.thumbnails li img,
-div.thumbnails li img {
-	width: 607px;
-	height: 109px;
-}
-
 .album h3 {
 	padding: 0;
 	margin: 0;
