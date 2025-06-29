@@ -1430,6 +1430,7 @@ button.positive,.buttons a.positive {
 	overflow: auto;
 	background-color: white;
 	resize: vertical;
+	max-width: 500px;
 }
 
 .resizeable_tagchecklist,.resizeable_tagchecklist li {
