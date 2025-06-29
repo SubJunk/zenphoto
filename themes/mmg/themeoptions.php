@@ -25,21 +25,21 @@ class ThemeOptions {
 
 		if (str_contains($_SERVER['SERVER_NAME'], 'dual')) {
 			setThemeOptionDefault('albums_per_page', 30);
-			setThemeOptionDefault('images_per_page', 30);
+			setThemeOptionDefault('images_per_page', 24);
 			setThemeOptionDefault('images_per_row', 6);
 			setThemeOptionDefault('image_size', 7680);
 			setThemeOptionDefault('thumb_size', 240);
 			setThemeOptionDefault('thumb_crop_height', 32.9);
 		} else if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
 			setThemeOptionDefault('albums_per_page', 20);
-			setThemeOptionDefault('images_per_page', 20);
+			setThemeOptionDefault('images_per_page', 16);
 			setThemeOptionDefault('images_per_row', 4);
 			setThemeOptionDefault('image_size', 11520);
 			setThemeOptionDefault('thumb_size', 371);
 			setThemeOptionDefault('thumb_crop_height', 38.4);
 		} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
 			setThemeOptionDefault('albums_per_page', 20);
-			setThemeOptionDefault('images_per_page', 20);
+			setThemeOptionDefault('images_per_page', 15);
 			setThemeOptionDefault('images_per_row', 4);
 			setThemeOptionDefault('image_size', 15360);
 			setThemeOptionDefault('thumb_size', 501);

@@ -616,6 +616,7 @@ label {
 	height: 50px;
 	margin-right: 70px;
 	float: left;
+	background-repeat: no-repeat;
 }
 
 /* Search Box

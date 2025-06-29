@@ -80,13 +80,23 @@ include('includes/footer.php');
 			</div>
 			<div id="padbox" class="noAdBottom">
 				<?php
-					$thumbnailsPerPage = 15;
+					$thumbnailsPerPage = 24;
+					$thumbnailWidth = 293;
+					$thumbnailHeight = 100;
+					if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+						$thumbnailsPerPage = 16;
+						$thumbnailWidth = 450;
+						$thumbnailHeight = 108;
+					} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+						$thumbnailsPerPage = 15;
+						$thumbnailWidth = 608;
+						$thumbnailHeight = 109;
+					}
+
 					$latestPage = 0;
 					$previousPage = 1;
 					$nextPage = 2;
 					$latestPageMultiplier = 0;
-					$thumbnailWidth = 608;
-					$thumbnailHeight = 109;
 					if (isset($_GET['latestImagesPage']) && is_numeric($_GET['latestImagesPage']) && $_GET['latestImagesPage'] > 1) {
 						$latestPage = $_GET['latestImagesPage'];
 						$latestPageMultiplier = $latestPage - 1;
