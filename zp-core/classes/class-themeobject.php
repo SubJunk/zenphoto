@@ -185,10 +185,10 @@ class ThemeObject extends PersistentObject {
 			if (!$this->isPublished()) {
 				return $this->is_public = false;
 			}
-			$parent = $this->getParent();
-			if ($parent && !$parent->isPublic()) {
-				return $this->is_public = false;
-			}
+			// $parent = $this->getParent();
+			// if ($parent && !$parent->isPublic()) {
+			// 	return $this->is_public = false;
+			// }
 			return $this->is_public = true;
 		} else {
 			return $this->is_public;
