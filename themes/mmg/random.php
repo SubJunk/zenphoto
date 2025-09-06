@@ -4,6 +4,55 @@ if (!defined('WEBPATH')) die();
 
 include('includes/cookiehandler.php');
 include('includes/footer.php');
+
+$googleAdTopSlot = "7478568232";
+$googleAdBottomSlot = "2908767835";
+if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+	$googleAdTopSlot = "2441738636";
+	$googleAdBottomSlot = "8348671432";
+} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+	$googleAdTopSlot = "6948285745";
+	$googleAdBottomSlot = "8640142704";
+}
+
+$adBoxTopLeft = "";
+$adBoxBottom = '';
+global $_zp_authority;
+$cookies = $_zp_authority->getAuthCookies();
+if (empty($cookies)) {
+	$adBoxTopLeft = '
+		<div id="AdBoxTopLeft">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-3418498412982536";
+			/* dmb category top */
+			google_ad_slot = "6547808732";
+			google_ad_slot="'.$googleAdTopSlot.'"
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+	';
+
+	$adBoxBottom = '
+		<div id="AdBoxBottom">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-3418498412982536";
+			/* dmb category bottom */
+			google_ad_slot="'.$googleAdBottomSlot.'"
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+	';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,12 +61,6 @@ include('includes/footer.php');
 		<title>Random Images | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
-		<?php
-		global $_zp_authority;
-		$cookies = $_zp_authority->getAuthCookies();
-		if (empty($cookies)) { ?>
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
-		<?php } ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -33,12 +76,15 @@ include('includes/footer.php');
 				<?php
 					$thumbnailsPerPage = 30;
 
+					echo $adBoxTopLeft;
+
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					echo '<div id="albumsSearch" class="thumbnails topRow">';
 					printImageStatistic($thumbnailsPerPage, "random", '', true, false, false, 40, false, 608, 109, true);
 					echo '</div>';
 				?>
 				<span class="AfterImagesBreak"></span>
+				<?php echo $adBoxBottom; ?>
 			</div>
 		</div>
 		<?php

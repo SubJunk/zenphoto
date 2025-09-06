@@ -43,32 +43,70 @@ include('includes/footer.php');
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
 		<?php
+		$adBoxTopLeft = "";
+		$adBoxBottom = "";
 		global $_zp_authority;
 		$cookies = $_zp_authority->getAuthCookies();
-		if (empty($cookies)) { ?>
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
-		<?php } ?>
+
+		$siteVariantLower = "dual";
+		$siteVariantCapital = "Dual";
+		$siteNumber = "two";
+		$googleAdTopSlot = "3833258738";
+		$googleAdBottomSlot = "6690235323";
+		if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+			$siteVariantCapital = "Triple";
+			$siteVariantLower = "triple";
+			$siteNumber = "three";
+			$googleAdTopSlot = "8734607665";
+			$googleAdBottomSlot = "6565122785";
+		} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+			$siteVariantCapital = "Quad";
+			$siteVariantLower = "quad";
+			$siteNumber = "four";
+			$googleAdTopSlot = "3222853765";
+			$googleAdBottomSlot = "1336732503";
+		}
+
+		if (empty($cookies)) {
+			$adBoxTopLeft = '
+				<div id="AdBoxTopLeft">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-3418498412982536";
+					/* dmb homepage top */
+					google_ad_slot = "'.$googleAdTopSlot.'";
+					google_ad_width = 728;
+					google_ad_height = 90;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+				</div>
+			';
+
+			$adBoxBottom = '
+				<div id="AdBoxBottom">
+					<script type="text/javascript"><!--
+					google_ad_client = "ca-pub-3418498412982536";
+					/* dmb homepage bottom */
+					google_ad_slot = "'.$googleAdBottomSlot.'";
+					google_ad_width = 728;
+					google_ad_height = 90;
+					//-->
+					</script>
+					<script type="text/javascript"
+					src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+				</div>
+			';
+		} ?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
 		<div id="main">
 			<?php include('includes/header.php'); ?>
 			<div id="AboveContentText">
-				<?php
-					include('includes/resolutionpreferences.php');
-					$siteVariantLower = "dual";
-					$siteVariantCapital = "Dual";
-					$siteNumber = "two";
-					if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
-						$siteVariantCapital = "Triple";
-						$siteVariantLower = "triple";
-						$siteNumber = "three";
-					} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
-						$siteVariantCapital = "Quad";
-						$siteVariantLower = "quad";
-						$siteNumber = "four";
-					}
-				?>
+				<?php include('includes/resolutionpreferences.php'); ?>
 				Welcome to the largest dedicated <?php echo $siteVariantLower ?> monitor backgrounds website on the internet.<br>
 				<?php echo $siteVariantCapital ?> monitor backgrounds (AKA <?php echo $siteVariantLower ?> screen wallpapers) are backgrounds that span <?php echo $siteNumber ?> screens.  <?php if (!$welcomeTextDisplay) { ?><span id="ExpandWelcomeTextContainer">(<a href="javascript:void(0);" class="ExpandWelcomeText">Expand</a>)</span><?php } ?>
 				<span id="WelcomeTextLower"<?php if ($welcomeTextDisplay) { ?> style="display:inline;"<?php } ?>>
@@ -106,6 +144,9 @@ include('includes/footer.php');
 						}
 					}
 					$offset = $latestPageMultiplier * $thumbnailsPerPage;
+
+
+					echo $adBoxTopLeft;
 
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					if (empty($sortBy) || $sortBy == "date") {
@@ -520,6 +561,7 @@ include('includes/footer.php');
 					</div>
 				</div>
 				<span class="AfterImagesBreak"></span>
+				<?php echo $adBoxBottom; ?>
 			</div>
 		</div>
 		<?php

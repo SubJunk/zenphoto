@@ -14,11 +14,55 @@ include('includes/footer.php');
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
 		<?php
-		global $_zp_authority;
-		$cookies = $_zp_authority->getAuthCookies();
-		if (empty($cookies)) { ?>
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
-		<?php } ?>
+			$googleAdTopSlot = "6547808732";
+			$googleAdBottomSlot = "0546946352";
+			if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+				$googleAdTopSlot = "0095462325";
+				$googleAdBottomSlot = "5870141077";
+			} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+				$googleAdTopSlot = "6948285745";
+				$googleAdBottomSlot = "8640142704";
+			}
+
+			$adBoxTopLeft = "";
+			$adBoxBottom = '';
+			global $_zp_authority;
+			$cookies = $_zp_authority->getAuthCookies();
+			if (empty($cookies)) {
+				$adBoxTopLeft = '
+					<div id="AdBoxTopLeft">
+						<script type="text/javascript"><!--
+						google_ad_client = "ca-pub-3418498412982536";
+						/* dmb category top */
+						google_ad_slot = "6547808732";
+						google_ad_slot="'.$googleAdTopSlot.'"
+						google_ad_width = 728;
+						google_ad_height = 90;
+						//-->
+						</script>
+						<script type="text/javascript"
+						src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</div>
+				';
+
+				$adBoxBottom = '
+					<div id="AdBoxBottom">
+						<script type="text/javascript"><!--
+						google_ad_client = "ca-pub-3418498412982536";
+						/* dmb category bottom */
+						google_ad_slot="'.$googleAdBottomSlot.'"
+						google_ad_width = 728;
+						google_ad_height = 90;
+						//-->
+						</script>
+						<script type="text/javascript"
+						src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</div>
+				';
+			}
+			?>
 	</head>
 	<body>
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -30,6 +74,7 @@ include('includes/footer.php');
 				<span class="subHeading">All user profiles</span>
 			</div>
 			<div id="padbox">
+				<?php echo $adBoxTopLeft; ?>
 				<div id="albums" class="thumbnails">
 					<ul>
 						<?php
@@ -58,6 +103,7 @@ include('includes/footer.php');
 									</div>
 								<?php
 								printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
+								echo $adBoxBottom;
 							}
 						?>
 					</ul>

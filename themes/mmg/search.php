@@ -5,6 +5,54 @@ if (!defined('WEBPATH'))
 
 include('includes/cookiehandler.php');
 include('includes/footer.php');
+
+$googleAdTopSlot = "4377943147";
+$googleAdBottomSlot = "1504367798";
+if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+	$googleAdTopSlot = "2134923184";
+	$googleAdBottomSlot = "1430832714";
+} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+	$googleAdTopSlot = "7244438630";
+	$googleAdBottomSlot = "1197905038";
+}
+
+$adBoxTop = '';
+$adBoxBottom = "";
+global $_zp_authority;
+$cookies = $_zp_authority->getAuthCookies();
+if (empty($cookies)) {
+	$adBoxTop = '
+		<div id="AdBoxTopLeft">
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- DMB Search Top -->
+			<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-3418498412982536"
+					data-ad-slot="'.$googleAdTopSlot.'"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	';
+
+	$adBoxBottom = '
+		<div id="AdBoxBottom">
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- DMB Search Bottom -->
+			<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-3418498412982536"
+					data-ad-slot="'.$googleAdBottomSlot.'"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,12 +61,6 @@ include('includes/footer.php');
 		<title>Search | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
-		<?php
-		global $_zp_authority;
-		$cookies = $_zp_authority->getAuthCookies();
-		if (empty($cookies)) { ?>
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
-		<?php } ?>
 	</head>
 	<body id="SearchPage">
 		<?php
@@ -33,6 +75,7 @@ include('includes/footer.php');
 				<span class="subHeading">Results</span>
 			</div>
 			<div id="padbox">
+				<?php echo $adBoxTop; ?>
 				<h2>Images</h2>
 				<div id="albumsSearch" class="thumbnails">
 					<ul>
@@ -55,6 +98,7 @@ include('includes/footer.php');
 					echo "<p>" . gettext("Sorry, no image matches found. Try refining your search.") . "</p>";
 				} else {
 					printPageListWithNav("« " . gettext("prev"), gettext("next") . " »");
+					echo $adBoxBottom;
 				}
 				?>
 				<span class="AfterImagesBreak"></span>

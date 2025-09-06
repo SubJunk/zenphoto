@@ -66,6 +66,72 @@ $userAdClient = getAdClient();
 if (!empty($userAdClient)) {
 	$adClient = $userAdClient;
 }
+
+$googleAdTopSlot = "7725395108";
+$googleAdBottomSlot = "3448981436";
+if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+	$googleAdTopSlot = "9663446374";
+	$googleAdBottomSlot = "6324641038";
+} else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+	$googleAdTopSlot = "2551180628";
+	$googleAdBottomSlot = "1797404444";
+}
+
+$adBoxTop = "";
+$adBoxBottom = "";
+global $_zp_authority;
+$cookies = $_zp_authority->getAuthCookies();
+if (empty($cookies)) {
+	$albumAdSlot = getAdSlot();
+	$albumAdClient = getAdClient();
+	$adBoxTop = '
+		<div id="AdBoxTopLeft">
+			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- DMB Image Top -->
+			<ins class="adsbygoogle"
+					style="display:block"
+					data-ad-client="ca-pub-3418498412982536"
+					data-ad-slot="'.$googleAdTopSlot.'"
+					data-ad-format="auto"
+					data-full-width-responsive="true"></ins>
+			<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+	';
+	if (!empty($albumAdSlot) && !empty($albumAdClient)) {
+		$adBoxBottom = '
+			<div id="AdBoxBottom">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<ins class="adsbygoogle"
+						style="display:block"
+						data-ad-client="'.$albumAdClient.'"
+						data-ad-slot="'.$albumAdSlot.'"
+						data-ad-format="auto"
+						data-full-width-responsive="true"></ins>
+				<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		';
+	} else {
+		$adBoxBottom = '
+			<div id="AdBoxBottom">
+				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- DMB Image Middle -->
+				<ins class="adsbygoogle"
+						style="display:block"
+						data-ad-client="ca-pub-3418498412982536"
+						data-ad-slot="'.$googleAdBottomSlot.'"
+						data-ad-format="auto"
+						data-full-width-responsive="true"></ins>
+				<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		';
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -74,13 +140,6 @@ if (!empty($userAdClient)) {
 		<title><?php printBareImageTitle(); ?> | <?php printBareAlbumTitle(); ?> | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
-		<?php
-			global $_zp_authority;
-			$cookies = $_zp_authority->getAuthCookies();
-			if (!getNSFW() && empty($cookies)) { ?>
-				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<?php echo $adClient; ?>" crossorigin="anonymous"></script>
-			<?php }
-		?>
 	</head>
 	<body id="ImagePage">
 		<?php zp_apply_filter('theme_body_open'); ?>
@@ -102,6 +161,10 @@ if (!empty($userAdClient)) {
 			<div id="padbox">
 				<div id="SingleImageContainer">
 					<?php
+					if (!getNSFW()) {
+						echo $adBoxTop;
+					}
+
 					$bareImageTitle = html_encode(getBareImageTitle());
 					$originalImageWidth = getFullWidth();
 					$originalImageHeight = getFullHeight();
@@ -132,6 +195,10 @@ if (!empty($userAdClient)) {
 							}
 						}
 						echo $downloadOptions;
+
+						if (!getNSFW()) {
+							echo $adBoxBottom;
+						}
 					}
 					?>
 				</div>

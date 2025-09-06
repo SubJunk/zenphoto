@@ -15,12 +15,6 @@ include('includes/footer.php');
 		<title>Favorites | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
 		<?php if (class_exists('RSS')) printRSSHeaderLink('Gallery', gettext('Gallery RSS')); ?>
-		<?php
-		global $_zp_authority;
-		$cookies = $_zp_authority->getAuthCookies();
-		if (empty($cookies)) { ?>
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3418498412982536" crossorigin="anonymous"></script>
-		<?php } ?>
 	</head>
 	<body id="FavoritesPage">
 		<?php zp_apply_filter('theme_body_open'); ?>
