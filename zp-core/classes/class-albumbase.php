@@ -277,6 +277,12 @@ class AlbumBase extends MediaObject {
 		$this->set('location', tagURLs($place));
 	}
 
+	function getAdSlot() {
+		return get_language_string($this->get('adslot'));
+	}
+
+	function setAdSlot($adslot) { $this->set('adslot', $adslot); }
+
 	function getAdClient() {
 		return get_language_string($this->get('adclient'));
 	}
