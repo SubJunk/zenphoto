@@ -103,36 +103,6 @@ if (empty($cookies)) {
 				?>
 				<span class="AfterImagesBreak"></span>
 			</div>
-			<?php
-			$isAlbumResult = false;
-			$c = 0;
-			while (next_album()): $c++;
-				if ($c == 1) {
-					$isAlbumResult = true;
-					?>
-				<div class="subPadbox">
-					<h2>Users</h2>
-					<div id="albumsusersinner" class="thumbnails">
-						<ul>
-				<?php } ?>
-						<li>
-							<a href="<?php echo html_encode(getAlbumURL()); ?>" title="<?php printAlbumTitle(); ?>">
-								<?php printAlbumThumbImage(getAnnotatedAlbumTitle()); ?>
-							</a>
-							<h3>
-								<a href="<?php echo html_encode(getAlbumURL()); ?>" title="<?php printAlbumTitle(); ?>"><?php printAlbumTitle(); ?></a>
-							</h3>
-						</li>
-			<?php
-			endwhile;
-			if ($isAlbumResult) { ?>
-					</ul>
-				</div>
-				<span class="AfterImagesBreak"></span>
-			</div>
-			<?php
-			}
-			?>
 		</div>
 		<?php
 		getFooter();
