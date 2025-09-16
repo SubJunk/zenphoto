@@ -1951,7 +1951,13 @@ class SearchEngine {
 		if (!empty($authCookies)) { // some sort of password exists, play it safe and make the tag unique
 			$user = getUserIP();
 		}
-		$array = array('item' => $table, 'fields' => implode(', ', $this->fieldList), 's' => $search, 'sort' => $sort, 'user' => $user);
+
+		if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
+			$array = array('item' => $table, 'fields' => implode(', ', $this->fieldList), 's' => $search, 'sort' => $sort, 'user' => $user, 'nsfw' => 0);
+		} else {
+			$array = array('item' => $table, 'fields' => implode(', ', $this->fieldList), 's' => $search, 'sort' => $sort, 'user' => $user);
+		}
+
 		$dynalbum = $this->getDynamicAlbum();
 		if($dynalbum) {
 			$array['dynalbum'] = $dynalbum->name;
@@ -2002,9 +2008,6 @@ class SearchEngine {
 		if (SEARCH_CACHE_DURATION) {
 			$criteria = serialize(serialize($criteria));
 			$sql = 'SELECT `id`, `date`, `data` FROM ' . $_zp_db->prefix('search_cache') . ' WHERE `criteria` = ' . $_zp_db->quote($criteria);
-			if ((!isset($_COOKIE['EnableNSFW']) || $_COOKIE['EnableNSFW'] != "yes")) {
-				$sql .= ' AND nsfw=0';
-			}
 			$result = $_zp_db->querySingleRow($sql);
 			if ($result) {
 				if ((time() - strtotime($result['date'])) > SEARCH_CACHE_DURATION * 60) {
