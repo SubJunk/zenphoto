@@ -203,7 +203,7 @@ if (empty($cookies)) {
 					?>
 				</div>
 			</div>
-			<div class="subPadbox thumbnails">
+			<div class="subPadbox thumbnails related-items-container">
 				<?php
 				if (function_exists('printRelatedItems')) {
 					printRelatedItems($relatedItemsCount, "images", null, null, true);

@@ -141,6 +141,10 @@ h2 {
 	padding: 6px 0;
 }
 
+.related-items-container h3 {
+	margin-left: 20px;
+}
+
 h2 a:link, h2 a:active, h2 a:visited { text-decoration: none; color: #9C3;}
 h2 a:hover, h2 a:focus { text-decoration: none; color: #7A2;}
 h3 {
@@ -329,7 +333,7 @@ ul.pagelist li {
 	line-height: 18px;
 }
 
-div.thumbnails h3 {
+div.thumbnails:not(.related-items-container) h3 {
 	display:inline-block;
 }
 
@@ -337,7 +341,7 @@ div.thumbnails.topRow h3 {
 	display:none;
 }
 
-div.thumbnails h3,
+div.thumbnails:not(.related-items-container) h3,
 .imageResolutionContainer {
 	position:absolute;
 	background-color:rgba(0, 0, 0, 0.3);
@@ -353,7 +357,7 @@ div.thumbnails.topRow li h3,
 	background-color:rgba(0, 0, 0, 0.4);
 }
 
-div.thumbnails h3,
+div.thumbnails:not(.related-items-container) h3,
 div.thumbnails.topRow li:hover h3 {
 	bottom:0;
 	left:0;
