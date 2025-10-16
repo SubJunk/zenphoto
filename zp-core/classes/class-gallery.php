@@ -506,7 +506,7 @@ class Gallery {
 	 * @param bool $publishedOnly set to true to exclude un-published albums
 	 * @return int
 	 */
-	function getNumAlbums($db = false, $publishedOnly = false) {
+	function getNumAlbums($db = true, $publishedOnly = true) {
 		global $_zp_db;
 		$count = -1;
 		if (!$db) {
