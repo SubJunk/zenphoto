@@ -5,12 +5,21 @@ if (!defined('WEBPATH')) die();
 include('includes/cookiehandler.php');
 include('includes/footer.php');
 
+$thumbnailsPerPage = 30;
+$thumbnailWidth = 293;
+$thumbnailHeight = 100;
 $googleAdTopSlot = "7478568232";
 $googleAdBottomSlot = "2908767835";
 if (str_contains($_SERVER['SERVER_NAME'], 'triple')) {
+	$thumbnailsPerPage = 20;
+	$thumbnailWidth = 450;
+	$thumbnailHeight = 108;
 	$googleAdTopSlot = "2441738636";
 	$googleAdBottomSlot = "8348671432";
 } else if (str_contains($_SERVER['SERVER_NAME'], 'quad')) {
+	$thumbnailsPerPage = 15;
+	$thumbnailWidth = 608;
+	$thumbnailHeight = 109;
 	$googleAdTopSlot = "6948285745";
 	$googleAdBottomSlot = "8640142704";
 }
@@ -80,7 +89,7 @@ if (empty($cookies)) {
 
 					require_once(dirname(dirname(__FILE__)).'/../zp-core/'.PLUGIN_FOLDER.'/image_album_statistics.php');
 					echo '<div id="albumsSearch" class="thumbnails topRow">';
-					printImageStatistic($thumbnailsPerPage, "random", '', true, false, false, 40, false, 608, 109, true);
+					printImageStatistic($thumbnailsPerPage, "random", '', true, false, false, 40, false, $thumbnailWidth, $thumbnailHeight, true);
 					echo '</div>';
 				?>
 				<span class="AfterImagesBreak"></span>
