@@ -69,5 +69,38 @@ function switcher_controllink($ignore) {
 	return $ignore;
 }
 
-$_zp_page_check = 'checkPageValidity'; //	opt-in, standard behavior
+function my_checkPageValidity($request, $gallery_page, $page) {
+	switch ($gallery_page) {
+		case 'gallery.php':
+			$gallery_page = 'index.php'; //	same as an album gallery index
+			break;
+		case 'index.php':
+			if (extensionEnabled('zenpage')) {
+				if (getOption('zenpage_zp_index_news')) {
+					$gallery_page = 'news.php'; //	really a news page
+					break;
+				}
+				if (getOption('zenpage_homepage')) {
+					return $page == 1; // only one page if zenpage enabled.
+				}
+			}
+			break;
+		case 'news.php':
+		case 'album.php':
+		case 'search.php':
+		case 'favorites.php':
+			break;
+		case 'users.php':
+      return $page;
+		default:
+			if ($page != 1) {
+				return false;
+			}
+	}
+	return checkPageValidity($request, $gallery_page, $page);
+}
+
+if (!OFFSET_PATH) { 
+	$_zp_page_check = 'my_checkPageValidity';
+}
 ?>
