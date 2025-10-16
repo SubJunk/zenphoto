@@ -55,8 +55,9 @@ if (empty($cookies)) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html<?php printLangAttribute(); ?>>
 	<head>
+		<meta charset="<?php echo LOCAL_CHARSET; ?>">
 		<?php zp_apply_filter('theme_head'); ?>
 		<title>Search | <?php printGalleryTitle(); ?></title>
 		<?php include('includes/head.php'); ?>
@@ -72,14 +73,20 @@ if (empty($cookies)) {
 				<?php
 				include('includes/resolutionpreferences.php'); ?>
 				<h4>Search: <strong><?php echo getSearchWords(); ?></strong></h4>
-				<span class="subHeading">Results</span>
+				<span class="subHeading">Results: <?php echo getNumImages(); ?></span>
 			</div>
 			<div id="padbox">
-				<?php echo $adBoxTop; ?>
+				<?php
+				echo $adBoxTop;
+				$c = 0;
+				?>
 				<h2>Images</h2>
 				<div id="albumsSearch" class="thumbnails">
 					<ul>
-						<?php while (next_image()): $c++; ?>
+						<?php
+						while (next_image()) {
+							$c++;
+							?>
 							<li>
 								<a href="<?php echo html_encode(getImageURL()); ?>" title="<?php echo html_encode(getBareImageTitle()); ?>">
 									<?php printImageThumb(getAnnotatedImageTitle()); ?>
@@ -90,7 +97,9 @@ if (empty($cookies)) {
 									</a>
 								</h3>
 							</li>
-						<?php endwhile; ?>
+						<?php
+					}
+					?>
 					</ul>
 				</div>
 				<?php
