@@ -603,6 +603,7 @@ echo $refresh;
 														$hidetitle = sprintf(gettext('Hide details for user %s'), $userid);
 													}
 													?>
+													<a href="/<?php echo $userid; ?>" target="_blank">Click to open user album page</a> - 
 													<a id="toggle_<?php echo $id; ?>" href="javascript:visible=getVisible('<?php echo $id; ?>','user', '<?php echo $displaytitle; ?>', '<?php echo $hidetitle; ?>');
 														 $('#show_<?php echo $id; ?>').val(visible);toggleExtraInfo('<?php echo $id; ?>','user',visible);" title="<?php echo $displaytitle; ?>" >
 															 <?php
