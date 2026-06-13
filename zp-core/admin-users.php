@@ -326,9 +326,14 @@ echo $refresh;
 				} else {
 					$showgroup = '';
 				}
-				?>
-				<?php
-				printSubtabs();
+				if ($showgroup) {
+					$pageselector_query = array(
+							'page' => 'users',
+							'showgroup' => $showgroup
+					);
+				} else {
+					$pageselector_query = array('page' => 'users');
+				}
 				global $_zp_authority;
 				?>
 				<div id="tab_admin" class="tabbox">
@@ -518,7 +523,7 @@ echo $refresh;
 										</select>
 									</th>
 									<th>
-										<?php printPageSelector($pagenumber, $rangeset, 'admin-users.php', array('page' => 'users')); ?>
+										<?php printPageSelector($pagenumber, $rangeset, 'admin-users.php', $pageselector_query); ?>
 									</th>
 									<?php
 								} else {
@@ -856,7 +861,10 @@ echo $refresh;
 								<th></th>
 								<th></th>
 								<th>
-									<?php printPageSelector($pagenumber, $rangeset, 'admin-users.php', array('page' => 'users')); ?>
+									<?php 
+									
+									printPageSelector($pagenumber, $rangeset, 'admin-users.php', $pageselector_query); 
+									?>
 								</th>
 							</tr>
 						</table> <!-- main admin table end -->
