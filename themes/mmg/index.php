@@ -155,7 +155,7 @@ include('includes/footer.php');
 						echo '<div class="thumbnails topRow">';
 						printImageStatistic(
 							$thumbnailsPerPage,
-							'latest',
+							'latest-date',
 							'',
 							true,
 							false,
