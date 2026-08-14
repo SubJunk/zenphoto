@@ -1045,15 +1045,8 @@ echo "\n</head>";
 														<td align="left" valign="top"><?php echo gettext("Owner:"); ?></td>
 														<td style="width:100%;">
 															<?php
-															if (zp_loggedin(MANAGE_ALL_ALBUM_RIGHTS)) {
-																?>
-																<select name="<?php echo $currentimage; ?>-owner">
-																	<?php echo admin_album_list($image->getOwner()); ?>
-																</select>
-																<?php
-															} else {
+																// MMG: Removed ability to change image owner
 																echo $image->getOwner();
-															}
 															?>
 														</td>
 														<td style="padding-left: 1em; text-align: left; border-bottom:none;" rowspan="14" valign="top">
