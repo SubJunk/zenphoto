@@ -1045,7 +1045,9 @@ echo "\n</head>";
 														<td align="left" valign="top"><?php echo gettext("Owner:"); ?></td>
 														<td style="width:100%;">
 															<?php
-																// MMG: Removed ability to change image owner
+																// Start custom code
+																// Removed ability to change image owner
+																// End custom code
 																echo $image->getOwner();
 															?>
 														</td>
@@ -1196,36 +1198,11 @@ echo "\n</head>";
 																																					 deleteConfirm('Delete-<?php echo $currentimage; ?>', '<?php echo $currentimage; ?>', '<?php echo addslashes(gettext("Are you sure you want to select this image for deletion?")); ?>')" /> <?php echo gettext("Delete image") ?>
 																</label>
 																<br class="clearall" />
-																<div id="movecopydiv-<?php echo $currentimage; ?>" style="padding-top: .5em; padding-left: .5em; display: none;">
-																	<?php echo gettext("to"); ?>:
-																	<select id="albumselectmenu-<?php echo $currentimage; ?>"
-																					name="<?php echo $currentimage; ?>-albumselect" onchange="">
-																						<?php
-																						foreach ($_zp_admin_mcr_albumlist as $fullfolder => $albumtitle) {
-																							$singlefolder = $fullfolder;
-																							$saprefix = "";
-																							$selected = "";
-																							if ($album->name == $fullfolder) {
-																								$selected = " selected=\"selected\" ";
-																							}
-																							// Get rid of the slashes in the subalbum, while also making a subalbum prefix for the menu.
-																							while (strstr($singlefolder, '/') !== false) {
-																								$singlefolder = substr(strstr($singlefolder, '/'), 1);
-																								$saprefix = "–&nbsp;" . $saprefix;
-																							}
-																							echo '<option value="' . $fullfolder . '"' . "$selected>" . $saprefix . $singlefolder . "</option>\n";
-																						}
-																						?>
-																	</select>
-																	<br /><p class="buttons"><a href="javascript:toggleMoveCopyRename('<?php echo $currentimage; ?>', '');"><img src="images/reset.png" alt="" /><?php echo gettext("Cancel"); ?></a>
-																	</p>
-																</div>
-																<div id="renamediv-<?php echo $currentimage; ?>" style="padding-top: .5em; padding-left: .5em; display: none;">
-																	<?php echo gettext("to"); ?>:
-																	<input name="<?php echo $currentimage; ?>-renameto" type="text" value="<?php echo $image->filename; ?>" /><br />
-																	<br /><p class="buttons"><a	href="javascript:toggleMoveCopyRename('<?php echo $currentimage; ?>', '');"><img src="images/reset.png" alt="" /><?php echo gettext("Cancel"); ?></a>
-																	</p>
-																</div>
+
+																<!-- Start custom code -->
+																<!-- Removed ability to move/copy/rename image files -->
+																<!-- End custom code -->
+
 																<span class="clearall" ></span>
 																<div id="deletemsg<?php echo $currentimage; ?>"	style="padding-top: .5em; padding-left: .5em; color: red; display: none">
 																	<?php echo gettext('Image will be deleted when changes are applied.'); ?>
