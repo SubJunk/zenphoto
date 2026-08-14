@@ -1177,21 +1177,11 @@ echo "\n</head>";
 															<h2 class="h2_bordered_edit"><?php echo gettext("Utilities"); ?></h2>
 															<div class="box-edit">
 																<!-- Move/Copy/Rename this image -->
-																<label class="checkboxlabel">
-																	<input type="radio" id="move-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-MoveCopyRename" value="move"
-																				 onclick="toggleMoveCopyRename('<?php echo $currentimage; ?>'
-																																					 , 'move');"  /> <?php echo gettext("Move"); ?>
-																</label>
-																<label class="checkboxlabel">
-																	<input type="radio" id="copy-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-MoveCopyRename" value="copy"
-																				 onclick="toggleMoveCopyRename('<?php echo $currentimage; ?>'
-																																					 , 'copy');"  /> <?php echo gettext("Copy"); ?>
-																</label>
-																<label class="checkboxlabel">
-																	<input type="radio" id="rename-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-MoveCopyRename" value="rename"
-																				 onclick="toggleMoveCopyRename('<?php echo $currentimage; ?>',
-																																					 'rename');"  /> <?php echo gettext("Rename File"); ?>
-																</label>
+
+																<!-- Start custom code -->
+																<!-- Removed ability to move/copy/rename image files (GUI) -->
+																<!-- End custom code -->
+
 																<label class="checkboxlabel">
 																	<input type="radio" id="Delete-<?php echo $currentimage; ?>" name="<?php echo $currentimage; ?>-MoveCopyRename" value="delete"
 																				 onclick="toggleMoveCopyRename('<?php echo $currentimage; ?>', '');
@@ -1200,7 +1190,7 @@ echo "\n</head>";
 																<br class="clearall" />
 
 																<!-- Start custom code -->
-																<!-- Removed ability to move/copy/rename image files -->
+																<!-- Removed ability to move/copy/rename image files (looping part) -->
 																<!-- End custom code -->
 
 																<span class="clearall" ></span>
@@ -1210,11 +1200,10 @@ echo "\n</head>";
 																</div>
 																<span class="clearall" ></span>
 
-																<?php
-																if ($image->isPhoto()) {
-																	printImageRotationSelector($image, $currentimage);
-																}
-																?>
+																<!-- Start custom code -->
+																<!-- Removed Rotation section -->
+																<!-- End custom code -->
+
 																<br class="clearall" />
 																<hr />
 																<div class="button buttons tooltip" title="<?php printf(gettext('Refresh %s metadata'), $image->filename); ?>">
@@ -1412,33 +1401,11 @@ echo "\n</head>";
 														</tr>
 														<?php
 													}
-													if ($image->hasMetadata()) {
-														?>
-														<tr>
-															<td valign="top"><?php echo gettext("Metadata:"); ?></td>
-															<td>
-																<?php
-																$exif = $image->getMetaData(false);
-																if (false !== $exif) {
-																	?>
-																	<div class="metadata_container">
-																		<table class="metadata_table" >
-																		<?php
-																		foreach ($exif as $field => $value) {
-																			$label = $_zp_exifvars[$field][2];
-																			$value = getImageMetadataValue($_zp_exifvars[$field][6], $value, $field);
-																			echo '<tr><td class="metadata_tag">' . $label . ': </td> <td>' . $value . '</td></tr>'. "\n";
-																		}
-																		?>
-																		</table>
-																	</div>		
-																	<?php
-																}
-																?>
-															</td>
-														</tr>
-														<?php
-													}
+													
+													// Start custom code
+													// Removed Metadata section
+													// End custom code
+
 													if ($singleimage) {
 														?>
 														<tr valign="top">
