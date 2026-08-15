@@ -3410,21 +3410,9 @@ function printManagedObjects($type, $objlist, $alterrights, $userobj, $prefix_id
 		return;
 	}
 	?>
-	<!-- <div class="box-albums-unpadded">
-		<h2 class="h2_bordered_albums">
-			<a href="javascript:toggle('<?php echo $prefix ?>');" title="<?php echo html_encode($hint); ?>" ><?php echo $text . $itemcount; ?></a>
-		</h2>
-		<div id="<?php echo $prefix ?>" style="display:none;">
-			<ul class="albumchecklist">
-				<?php
-				generateUnorderedListFromArray($cv, $cv, $prefix, $alterrights, true, true, 'user-' . $prefix_id, $extra);
-				generateUnorderedListFromArray(array(), $rest, $prefix, $alterrights, true, true, 'user-' . $prefix_id, $extra2);
-				?>
-			</ul>
-			<span class="floatright"><?php echo $legend; ?>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<br class="clearall" />
-		</div>
-	</div> -->
+	<!-- Start custom code
+	Removed album management from users tab
+	End custom code -->
 	<?php
 }
 
