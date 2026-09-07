@@ -140,7 +140,8 @@ class user_expiry {
 			$shouldDisableUser = true;
 			if (getOption('user_expiry_only_non_image_users')) {
 				$album = $userobj->getAlbum();
-				if ($album->hasImage()) {
+				$imagesTotal = $album->getNumAllImages();
+				if ($imagesTotal > 0) {
 					$shouldDisableUser = false;
 				}
 			}

@@ -164,24 +164,6 @@ class Album extends AlbumBase {
 	}
 
 	/**
-	 * Returns whether this album has at least one image.
-	 *
-	 * @return boolean
-	 */
-	function hasImage() {
-		if (!$this->exists) {
-			return false;
-		}
-
-		if ($this->images === NULL) {
-			$images = $this->loadFileNames();
-			$this->images = $this->sortImageArray($images, NULL, NULL, NULL);
-		}
-
-		return parent::getNumImages() > 1;
-	}
-
-	/**
 	 * Delete the entire album PERMANENTLY. Be careful! This is unrecoverable.
 	 * Returns true if successful
 	 *
